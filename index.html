@@ -6,16 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>StayCO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/stayco.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/animate.css">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/css/stayco.css" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./.css">
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-    <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
-    <title>Stay-Co</title>
 </head>
 
 <body>
@@ -35,7 +31,7 @@
                     <div class="col">
                         Start Date:
                         <br>
-                        <input type="date" name="bday" min="2018-04-14">
+                        <input id="startDate" type="date" name="startDate" min="2001-12-31" max="2028-12-31">
                         <br>
                         <br>
                     </div>
@@ -43,7 +39,7 @@
                     <div class="col">
                         End Date:
                         <br>
-                        <input type="date" name="bday" max="2018-05-31">
+                        <input id="endDate" type="date" name="endDate" min="0000-00-00" max="0000-00-00">
                         <br>
                         <br>
                     </div>
