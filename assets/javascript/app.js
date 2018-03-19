@@ -7,3 +7,4 @@ var maxDate = moment(currentDate).add(4, "days").format("YYYY-MM-DD");
 // Changing the max and min attributes of the start and end date
 $("#startDate").attr({ "min": currentDate, "max": maxDate, "value": currentDate });
 $("#endDate").attr({ "min": currentDate, "max": maxDate, "value": currentDate });
+
