@@ -103,14 +103,13 @@ $(document).ready(function () {
 
     //Bring back map API
     function mapRequest() {
-
+      
     }
 
     //Creates location suggestions
     function suggestLocations() {
 
-    }
-
+}
     //Populates location suggestions
     function outputLocations() {
 

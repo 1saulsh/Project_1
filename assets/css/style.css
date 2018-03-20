@@ -30,3 +30,11 @@ body {
 .tag-line {
     font-size: 25px;
 }
+
+#map{
+    height:400px;
+    width:100%;
+}
+h1 {
+    color:navy;
+}

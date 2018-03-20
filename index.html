@@ -12,6 +12,19 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
+
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
+    type="text/javascript" charset="utf-8"></script>
+    
+    <!-- ensures optimum performance on mobile devices-->
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" 
+    type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" 
+    type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body>
@@ -67,11 +80,14 @@
                             </select>
                         </form>
                     </div>
-                    <div class="col"></div>
+                
+                        </div>
+
+                   
+                    </div>
                 </div>
             </div>
 
-            <div class="lead">
                 <div class="row">
                     <div class="col">
                         <a class="btn btn-danger btn-lg my-2" href="#" role="button">Submit</a>
@@ -82,9 +98,14 @@
 
         <div class="location p-2 m-1">
             <h3>Location Section - This will not be visible until dates are selected</h3>
-            <h2>Location 1</h2>
+            <!-- <h2>Location 1</h2>
             <h2>Location 2</h2>
-            <h2>Location 3</h2>
+            <h2>Location 3</h2> -->
+            
+            <h2>My Google Map</h2>
+            <div id="map">
+
+            </div>
         </div>
 
         <div class="activities p-2 m-1">
@@ -117,6 +138,42 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
         <script src="./assets/javascript/app.js"></script>
-</body>
+
+        <script>
+            function initMap() {
+
+                //Map options
+                var options = {
+                    zoom:8,
+                    center:{lat:39.5501, lng:-105.7821}
+                }
+                
+                //New Map
+                var map = new google.maps.Map(document.getElementById("map"), options);
+            
+                
+                //Add marker
+                var marker = new google.maps.Marker({
+                    position: {lat:39.7392, lng:-104.9903},
+                    map:map
+                });
+
+                var infoWindow = new google.maps.InfoWindow({
+                content:"<h1>Denver, CO</h1>"
+                });
+
+                marker.addListener("click", function(){
+                    infoWindow.open(map, marker);
+                });
+            }
+        </script>
+
+        <!--GoogleMaps API script-->
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
+        </script>
+
+    </body>
 
 </html>
+
