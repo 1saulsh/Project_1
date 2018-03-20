@@ -2,6 +2,8 @@ $(document).ready(function () {
     // The controller function calls the functions in the desired order
     controller();
 
+
+
     //Variables Declaration
     var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail, city1, city2, city3;
 
@@ -37,40 +39,31 @@ $(document).ready(function () {
 
     
     //Functions Declaration
+
+    controller();
     
     //Controles program logic
     function controller() {
-        bindSubmit();
+        submit();
         friendlyCalendar();
     }
 
     //User input verification for date format
-    function validateDate() {
-        jQuery.validator.setDefaults({
-          debug: true,
-          success: "valid"
-        });
-        $( "#myform" ).validate({
-          rules: {
-            startDate: {
-              required: true,
-              date: true
-            }
-          }
-        });
+    function validateDate(txtDate) {
+       
     }
 
-    function bindSubmit() {
+    function submit() {
         console.log("Inside submit");
-        $("#submit").on("click", storeDates);
+        document.getElementById("submit").addEventListener("click", storeDates);
     }
     
     //Stores user input dates
     function storeDates(event) {
+         console.log("Inside storeDates");
         event.preventDefault();
-        console.log("Inside storeDates");
-        startDate = $("#startDate").val();
-        endDate = $("#endDate").val();
+        startDate = document.getElementById("startDate").value;
+        endDate = document.getElementById("endDate").value;
         console.log(startDate);
         console.log(endDate);
     }
@@ -87,34 +80,11 @@ $(document).ready(function () {
     //Populates activity options based on user input
     function filterOptions() {
 
-   }
+    }
 
     //Bring back weather API
     function weatherRequest() {
-        var APIKey = "166a433c57516f51dfab1f7edaed8413";
-        var queryLocation = "Minneapolis,US";
-        // Here we are building the URL we need to query the database
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +queryLocation+ "&appid=" + APIKey;
 
-        $.ajax({
-          url: queryURL,
-          method: "GET"
-        })
-          .then(function(response) {
-            // Log the queryURL
-            console.log(queryURL);
-            // Log the resulting object
-            console.log(response);
-            // Transfer content to HTML
-            $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-            $(".wind").text("Wind Speed: " + response.wind.speed);
-            $(".humidity").text("Humidity: " + response.main.humidity);
-            $(".temp").text("Temperature (F) " + response.main.temp);
-            // Log the data in the console as well
-            console.log("Wind Speed: " + response.wind.speed);
-            console.log("Humidity: " + response.main.humidity);
-            console.log("Temperature (F): " + response.main.temp);
-          });
     }
 
     //Bring back map API
@@ -147,25 +117,7 @@ $(document).ready(function () {
 
     //Stores user email
     function storeEmail() {
-        userEmail = $("#email").val();
 
-         var config = {
-           apiKey: "AIzaSyDArV6eE1B4jA-wTGWT0sKUmbSobhgd78U",
-           authDomain: "project-1-b6d47.firebaseapp.com",
-           databaseURL: "https://project-1-b6d47.firebaseio.com",
-           projectId: "project-1-b6d47",
-           storageBucket: "",
-           messagingSenderId: "137075171849"
-         };
-
-        firebase.initializeApp(config);
-
-        var database = firebase.database();
-
-        $("#emailSubmit").on("click", function() {
-          database.ref().set({
-            userEmail: userEmail
-          });
-        });
     }
-});
+
+}); //ends the "document.ready" code
