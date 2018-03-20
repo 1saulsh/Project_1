@@ -42,7 +42,9 @@ $(document).ready(function () {
 
     //Controles program logic
     function controller() {
+        bindSubmit();
         friendlyCalendar();
+        filterOptions();
     }
 
     //User input verification for date format
@@ -93,6 +95,24 @@ $(document).ready(function () {
 
     //Populates activity options based on user input
     function filterOptions() {
+        var filterChoice = "";
+
+        $("#warmOrCold").change(function () {
+            filterChoice = $(this).val();
+
+            coldWeather = "<option>Choose Warm or Cold Weather Activities</option> <option value='1'> Ice Skating </option> <option value='2'> Sledding/Tubing </option> <option value='3'> Skiing </option> <option value='4'> Snowshoeing </option> <option value='5'> Ice Fishing </option> <option value='6'> Snowmobiling </option>";
+
+            warmWeather = "<option>Choose Warm or Cold Weather Activities</option> <option value='1'> Hiking </option> <option value='2'> Biking </option> <option value='3'> Mountain Climbing </option> <option value='4'> Zip Lining </option> <option value='5'> Sky Diving </option> <option value='6'> 4-Wheeling </option>";
+
+            if ($(this).val() === "1") {
+                $("#activitiesList").html(warmWeather);
+            } else if ($(this).val() === "2") {
+                $("#activitiesList").html(coldWeather);
+            } else {
+                $("#activitiesList").html("<option>Choose Warm or Cold Weather Activities</option>");
+            }
+        });
+
 
     }
 
