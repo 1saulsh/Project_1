@@ -1,0 +1,32 @@
+body {
+    background-image: url(../images/mountains.jpg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: auto 1300px;
+}
+
+
+.jumbo, .email {
+    background:rgba(0, 54, 80, 0.65);
+    color: white;
+}
+
+.location {
+    margin-top: 5px;
+    background:rgba(191,44,52, 0.65);
+    color: white;
+}
+
+.activities {
+    background:rgba(246,208,71, 0.65);
+    color: black;
+}
+
+
+.stayCoImg {
+    height: 250px;
+}
+
+.tag-line {
+    font-size: 25px;
+}

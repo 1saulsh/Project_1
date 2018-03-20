@@ -1,127 +1,122 @@
 <!DOCTYPE html>
-<html lang="en" class = "full-height">
+<html lang="en" class="full-height">
+
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>StayCO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./.css" />
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css"/>
-    
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
- 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
 </head>
 
 <body>
-    <div class = "bg"></div>
-    <div class="jumbotron ">
+    <div class="container">
+        <div class="jumbo text-center">
+            <h1 class="display-4 font-weight-bold text-center">StayCO</h1>
 
-        <h1 class="display-4 font-weight-bold text-center">StayCO</h1>
-        <p class="lead text-center"> Embracing Colorado Weather One Day at a Time</p>
-        <hr class="my-4">
-        <p>When will you be traveling?</p>
+            <p class="tag-line text-center"> Embracing Colorado Weather One Day at a Time</p>
+            <img class="stayCoImg" src="./assets/images/bluTxt-StayCO.jpg" alt="stayCO Logo">
+            <hr class="my-4">
+            <h4>Pick a Colorado travel destination based on the upcoming weather</h4>
+            <p class="lead">When will you be traveling?</p>
 
-        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-            <span></span> <b class="caret"></b>
-        </div>
+            <form action="/action_page.php">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            Start Date:
+                            <br>
+                            <input id="startDate" type="date" name="startDate" min="2018-01-01" max="2028-12-01" value="2018-01-01">
+                            <br>
+                            <br>
+                        </div>
 
-        <form action="/action_page.php">
-
-        <div class = "container">
-           
-            <div class = "row">
-                    <div class = "col">
-                        Start Date:<br>
-                        <!--today-->
-                        <input type="date" name="bday" min="2018-04-14"><br><br>
+                        <div class="col">
+                            End Date:
+                            <br>
+                            <input id="endDate" type="date" name="endDate" min="2018-01-01" max="2028-12-01" value="2018-01-01">
+                            <br>
+                            <br>
+                        </div>
                     </div>
-
-                    <div class = "col"> -->
-                        <!-- End Date:<br>
-                        today + 4 days out-->
-                         <!--<input type="date" name="bday" max="2018-05-31"><br><br>
-                    </div>
-            </div> 
-       </div>
-
-        <div class = "container">
-
-            <div class = "row">
-                <div class = "col-4-lg">
-                    Cold Weather Activities:<br>
-                    <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Ski</a>
-                                <a class="dropdown-item" href="#">Sled</a>
-                                <a class="dropdown-item" href="#">Snow Mobile</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Separated link</a>
-                              </div>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                          </div>
-
-                          <div class = "col-4-lg">
-                                Warm Weather Activities:<br>
-                                <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                                          <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Hiking</a>
-                                            <a class="dropdown-item" href="#">4 Wheeling</a>
-                                            <a class="dropdown-item" href="#">Camping</a>
-                                            <div role="separator" class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Separated link</a>
-                                          </div>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                      </div>
-            
-                          </div>
-                          <div class = "col-4-lg">
-                                Other:<br>
-                                <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                                          <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Hot Springs</a>
-                                            <a class="dropdown-item" href="#">Concerts/Fairs</a>
-                                            <a class="dropdown-item" href="#">Brewery</a>
-                                            <div role="separator" class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Separated link</a>
-                                          </div>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                      </div>
-            
-                          </div>
                 </div>
-            </div>
-        </div>
-           
-        </form>
-            
-        <p class="lead">
-
-            <div class = "row">
-                <div class = "col">
-                    <a class="btn btn-danger btn-lg" href="#" role="button">Submit</a>
+            </form>
+            <div class="container text-center ">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <form action="select">
+                            Are You Looking For Warm or Cold Weather Activities?
+                            <select class="custom-select mb-2" id="warmOrCold">
+                                <option selected>Select Warm or Cold Weather Activities</option>
+                                <option value="1">Warm Weather Activities</option>
+                                <option value="2">Cold Weather Activities</option>
+                                <!-- <option value="3">Other</option> -->
+                            </select>
+                            <br>
+                            <select class="custom-select">
+                                <option selected>Choose Warm or Cold Weather</option>
+                                <!-- <option value="1">Skiing</option> -->
+                                <!-- <option value="2">Snow Boarding</option> -->
+                                <!-- <option value="3">Sledding</option> -->
+                            </select>
+                        </form>
+                    </div>
+                    <div class="col"></div>
                 </div>
             </div>
 
-        </p>
-    </div>
+            <div class="lead">
+                <div class="row">
+                    <div class="col">
+                        <a class="btn btn-danger btn-lg my-2" href="#" role="button">Submit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
+        <div class="location p-2 m-1">
+            <h3>Location Section - This will not be visible until dates are selected</h3>
+            <h2>Location 1</h2>
+            <h2>Location 2</h2>
+            <h2>Location 3</h2>
+        </div>
+
+        <div class="activities p-2 m-1">
+            <h3>Activities Section - This will not be visible until location is selected ?? </h3>
+            <h2>Activity 1</h2>
+            <h2>Activity 2</h2>
+            <h2>Activity 3</h2>
+        </div>
+
+        <div class="email p-2 m-1">
+            <form>
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <label for="inlineFormInputGroup">Enter Your Email Address for Future Updates:</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+                        <small class="form-text">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-danger">Submit</button>
+                    </div>
+            </form>
+            </div>
+
+        </div>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="./assets/javascript/app.js"></script>
 </body>
+
 </html>
