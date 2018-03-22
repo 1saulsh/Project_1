@@ -93,7 +93,6 @@ $(document).ready(function () {
         $("#endDate").attr({ "min": currentDate, "max": maxDate, "value": currentDate });
     };
 
-
     //Populates activity options based on user input
     function filterOptions() {
         var filterChoice = "";
@@ -135,7 +134,7 @@ $(document).ready(function () {
     }
 
     //Expands location suggestions
-    function expandSuggestion() {
+    function expandSuggestion() {fvalid
 
     }
 

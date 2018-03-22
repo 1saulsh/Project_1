@@ -64,20 +64,81 @@
                     <div class="col"></div>
                     <div class="col-6">
                         <form action="select">
-                            Are You Looking For Warm or Cold Weather Activities?
+                            Are You Hoping to Enjoy Warm or Cold Weather?
                             <select class="custom-select mb-2" id="warmOrCold">
-                                <option selected>Select Warm or Cold Weather Activities</option>
-                                <option value="1">Warm Weather Activities</option>
-                                <option value="2">Cold Weather Activities</option>
+                                <option selected value="0" id="notSelected">Select Warm or Cold Weather Activities</option>
+                                <option value="1" id="warmSelect">Warm Weather</option>
+                                <option value="2" id="coldSelect">Cold Weather</option>
                                 <!-- <option value="3">Other</option> -->
                             </select>
-                            <br>
-                            <select class="custom-select">
-                                <option selected>Choose Warm or Cold Weather</option>
-                                <!-- <option value="1">Skiing</option> -->
-                                <!-- <option value="2">Snow Boarding</option> -->
-                                <!-- <option value="3">Sledding</option> -->
-                            </select>
+                        </form>
+                        <!-- Cold Weather Activities Form -->
+                        <form method="get" class="text-left" id="coldActivities">
+                            What Activities Are You Interested In?
+                            <div multiple class="custom-select">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Skiing"> Skiing
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Sledding"> Sledding/Tubing
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Ice Skating"> Ice Skating
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Snowshoeing"> Snowshoeing
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Snowmobiling"> Snowmobiling
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Ice Fishing"> Ice Fishing
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-1 text-right">
+                                    <label for="inputOther" class="col-sm-2 col-form-label">Other:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputOther">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Warm Weather Activities Form -->
+                        <form method="get" class="text-left" id="warmActivities">
+                            What Activities Are You Interested In?
+                            <div multiple class="custom-select">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Hiking"> Hiking
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Biking"> Biking
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Spelunking"> Spelunking
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Zip Lining"> Zip Lining
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="Sky Diving"> Sky Diving
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="4-Wheeling"> 4-Wheeling
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-1 text-right">
+                                    <label for="inputOther" class="col-sm-2 col-form-label">Other:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="inputOther">
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="col"></div>
