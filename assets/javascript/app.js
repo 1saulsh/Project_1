@@ -7,8 +7,8 @@ $(document).ready(function () {
     //Variables Declaration 
     var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail,// options, map, marker, infoWindow;
 
-    //Start date of desired stacation
-    startDate = "";
+        //Start date of desired stacation
+        startDate = "";
 
     //End date of desired stacation
     endDate = "";
@@ -43,9 +43,8 @@ $(document).ready(function () {
 
     //Controles program logic
     function controller() {
-
-        friendlyCalendar();
         filterOptions();
+        weatherRequest()
     }
 
     //User input verification for date format
@@ -99,56 +98,86 @@ $(document).ready(function () {
 
         $("#warmOrCold").change(function () {
             filterChoice = $(this).val();
-            
+
             //warm is 1 and cold is 2
             if (filterChoice === "1") {
-                $("#coldActivities").hide ();
-                $("#warmActivities").show ();                
+                $("#coldActivities").hide();
+                $("#warmActivities").show();
             } else if (filterChoice === "2") {
-                $("#warmActivities").hide ();
-                $("#coldActivities").show ();
+                $("#warmActivities").hide();
+                $("#coldActivities").show();
             } else {
-                $("#coldActivities").hide ();
-                $("#warmActivities").hide ();
+                $("#coldActivities").hide();
+                $("#warmActivities").hide();
             }
         });
     }
 
-    //Bring back weather API
-    function weatherRequest() {
 
-    }
 
-    //Bring back map API
-    function mapRequest() {
-      
-    }
+//Bring back weather API
+function weatherRequest() {
+    var APIKey = "f14d227760b4a41dd4df09b8f308252e";
+    var queryLocation = "Denver, US";
+    // Here we are building the URL we need to query the database
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + queryLocation + "&appid=f14d227760b4a41dd4df09b8f308252e";
 
-    //Creates location/marker suggestions
-    function suggestLocations() {
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function (response) {
+            // Log the queryURL
+            console.log("queryURL= " + queryURL);
+            // Log the resulting object
+            console.log(response);
+            // Transfer content to HTML
+            $("#city").html(response.city.name);
+            $("#main_weather").html(response.weather[0].main);
+            $("#description_weather").html(response.weather[0].description);
+            $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            $("#temperature").html(response.main.temp);
+            $("#pressure").html(response.main.pressure);
+            $("#humidity").html(response.main.humidity);
+
+            console.log("Wind Speed: " + response.wind.speed);
+            console.log("Humidity: " + response.main.humidity);
+            console.log("Temperature (F): " + response.main.temp);
+        });
+}
+
+
+//Bring back map API
+function mapRequest() {
 
 }
-    //Populates location suggestions
-    function outputLocations() {
 
+//Creates location/marker suggestions
+function suggestLocations() {
+
+}
+//Populates location suggestions
+function outputLocations() {
+
+}
+
+//Expands location suggestions
+function expandSuggestion() {
+    fvalid
+
+}
+
+//User input verification for email format
+function validateEmail() {
+    function isEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
     }
+}
 
-    //Expands location suggestions
-    function expandSuggestion() {fvalid
+//Stores user email
+function storeEmail() {
 
-    }
-
-    //User input verification for email format
-    function validateEmail() {
-        function isEmail(email) {
-            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            return regex.test(email);
-        }
-    }
-
-    //Stores user email
-    function storeEmail() {
-
-    }
+}
 
 }); //ends the "document.ready" code
