@@ -4,8 +4,8 @@ $(document).ready(function () {
 
 
 
-    //Variables Declaration
-    var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail, city1, city2, city3;
+    //Variables Declaration 
+    var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail,// options, map, marker, infoWindow;
 
     //Start date of desired stacation
     startDate = "";
@@ -28,16 +28,17 @@ $(document).ready(function () {
     //User email
     userEmail = "";
 
-    //Location suggestion 1
-    city1 = "";
+
+    //Location suggestion 1 identified by a marker
+    /*addMarker = "";
 
     //Location suggestion 2
-    city2 = "";
+    addMarker = "";
 
     //Location suggestion 3
-    city3 = "";
+    addMarker = "";
 
-
+*/
     //Functions Declaration
 
     //Controles program logic
@@ -120,14 +121,13 @@ $(document).ready(function () {
 
     //Bring back map API
     function mapRequest() {
-
+      
     }
 
-    //Creates location suggestions
+    //Creates location/marker suggestions
     function suggestLocations() {
 
-    }
-
+}
     //Populates location suggestions
     function outputLocations() {
 
