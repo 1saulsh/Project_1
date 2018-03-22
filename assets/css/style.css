@@ -38,3 +38,11 @@ body {
 h1 {
     color:navy;
 }
+
+#coldActivities {
+    display: none;
+    }
+
+#warmActivities {
+    display: none;
+}
