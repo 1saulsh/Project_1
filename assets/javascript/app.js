@@ -89,8 +89,8 @@ $(document).ready(function () {
     function friendlyCalendar() {
         currentDate = moment().format("YYYY-MM-DD");
         maxDate = moment(currentDate).add(4, "days").format("YYYY-MM-DD");
-        $("#startDate").attr({ "min": currentDate, "max": maxDate, "value": currentDate });
-        $("#endDate").attr({ "min": currentDate, "max": maxDate, "value": currentDate });
+        $("#startDate").attr({ "min": currentDate, "value": currentDate });
+        $("#endDate").attr({ "min": currentDate, "value": currentDate });
     };
 
     //Populates activity options based on user input
