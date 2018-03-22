@@ -43,8 +43,8 @@ $(document).ready(function () {
 
     //Controles program logic
     function controller() {
-        filterOptions();
         weatherRequest()
+        validateEmail()
     }
 
     //User input verification for date format
@@ -79,11 +79,6 @@ $(document).ready(function () {
         return true;
     }
 
-    //Stores user input dates
-    function storeDates() {
-
-    }
-
     //Uses Moment JS to add max and min dates to calendar & make it more user friendly;
     function friendlyCalendar() {
         currentDate = moment().format("YYYY-MM-DD");
@@ -115,69 +110,128 @@ $(document).ready(function () {
 
 
 
-//Bring back weather API
-function weatherRequest() {
-    var APIKey = "f14d227760b4a41dd4df09b8f308252e";
-    var queryLocation = "Denver, US";
-    // Here we are building the URL we need to query the database
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + queryLocation + "&appid=f14d227760b4a41dd4df09b8f308252e";
+    //Bring back weather API
+    function weatherRequest() {
+        var APIKey = "f14d227760b4a41dd4df09b8f308252e";
+        var queryLocation = "denver";
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        .then(function (response) {
-            // Log the queryURL
-            console.log("queryURL= " + queryURL);
-            // Log the resulting object
-            console.log(response);
-            // Transfer content to HTML
-            $("#city").html(response.city.name);
-            $("#main_weather").html(response.weather[0].main);
-            $("#description_weather").html(response.weather[0].description);
-            $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-            $("#temperature").html(response.main.temp);
-            $("#pressure").html(response.main.pressure);
-            $("#humidity").html(response.main.humidity);
+        // Current Weather Data URL
+        var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + queryLocation + "&units=imperial&appid=" + APIKey;
 
-            console.log("Wind Speed: " + response.wind.speed);
-            console.log("Humidity: " + response.main.humidity);
-            console.log("Temperature (F): " + response.main.temp);
-        });
-}
+        // Future Forecast URL
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + queryLocation + "&units=imperial&appid=" + APIKey;
+
+        // WeatherWidget Variables
+        var cityName = "";
+        var currentTemp = "";
+        var currentWind = "";
+        var currentDescription = "";
+        var currentIcon = "";
+        var icon30 = "";
+        var icon60 = "";
+        var icon90 = "";
+        var icon120 = "";
+        var high30 = "";
+        var high60 = "";
+        var high90 = "";
+        var high120 = "";
+        var low30 = "";
+        var low60 = "";
+        var low90 = "";
+        var low120 = "";
+        var description30 = "";
+        var description60 = "";
+        var description90 = "";
+        var description120 = "";
+
+        // for current weather
+        $.ajax({
+            url: weatherURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                console.log(weatherURL);
+                console.log(response);
+                cityName = response.name;
+                console.log('cityName =' + cityName);
+                currentTemp = response.main.temp;
+                console.log('currentTemp =' + currentTemp);
+                currentWind = response.wind.speed;
+                console.log('currentWind =' + currentWind);
+                currentDescription = response.weather[0].description;
+                console.log('currentDescription =' + currentDescription);
+                currentIcon = response.weather[0].icon;
+                console.log('currentIcon =' + currentIcon);
+            });
 
 
-//Bring back map API
-function mapRequest() {
+        // for forecasted weather
+        $.ajax({
+            url: forecastURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                // Log the forecastURL
+                console.log("forecastURL= " + forecastURL);
+                icon30 = "";
+                icon60 = "";
+                icon90 = "";
+                icon120 = "";
+                high30 = "";
+                high60 = "";
+                high90 = "";
+                high120 = "";
+                low30 = "";
+                low60 = "";
+                low90 = "";
+                low120 = "";
+                description30 = "";
+                description60 = "";
+                description90 = "";
+                description120 = "";
+                
 
-}
+                    // Transfer content to HTML
 
-//Creates location/marker suggestions
-function suggestLocations() {
 
-}
-//Populates location suggestions
-function outputLocations() {
+                    $("#temperature").html(response.main.temp);
+                $("#pressure").html(response.main.pressure);
+                $("#humidity").html(response.main.humidity);
 
-}
-
-//Expands location suggestions
-function expandSuggestion() {
-    fvalid
-
-}
-
-//User input verification for email format
-function validateEmail() {
-    function isEmail(email) {
-        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        return regex.test(email);
+                console.log("Wind Speed: " + response.wind.speed);
+                console.log("Humidity: " + response.main.humidity);
+                console.log("Temperature (F): " + response.main.temp);
+            });
+        // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
     }
-}
 
-//Stores user email
-function storeEmail() {
+    // Push location specific weather data to weatherWidgets
+    function outputLocations() {
 
-}
+    }
+
+    //Pin locations to map as they are selected by user
+    function mapRequest() {
+
+    }
+
+    //Expands location suggestions
+    function expandSuggestion() {
+
+    }
+
+    //User input verification for email format
+    function validateEmail() {
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+            console.log('?? =' + regex.test(email));
+        }
+    }
+
+    //Stores user email
+    function storeEmail() {
+
+    }
 
 }); //ends the "document.ready" code
