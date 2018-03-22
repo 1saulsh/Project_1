@@ -30,3 +30,11 @@ body {
 .tag-line {
     font-size: 25px;
 }
+
+#coldActivities {
+    display: none;
+    }
+
+#warmActivities {
+    display: none;
+}

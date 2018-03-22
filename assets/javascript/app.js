@@ -42,7 +42,9 @@ $(document).ready(function () {
 
     //Controles program logic
     function controller() {
+
         friendlyCalendar();
+        filterOptions();
     }
 
     //User input verification for date format
@@ -93,7 +95,23 @@ $(document).ready(function () {
 
     //Populates activity options based on user input
     function filterOptions() {
+        var filterChoice = "";
 
+        $("#warmOrCold").change(function () {
+            filterChoice = $(this).val();
+            
+            //warm is 1 and cold is 2
+            if (filterChoice === "1") {
+                $("#coldActivities").hide ();
+                $("#warmActivities").show ();                
+            } else if (filterChoice === "2") {
+                $("#warmActivities").hide ();
+                $("#coldActivities").show ();
+            } else {
+                $("#coldActivities").hide ();
+                $("#warmActivities").hide ();
+            }
+        });
     }
 
     //Bring back weather API
