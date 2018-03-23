@@ -5,10 +5,17 @@ $(document).ready(function () {
 
 
     //Variables Declaration 
-    var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail,// options, map, marker, infoWindow;
+    var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail, cityName, queryLocation;
+    // options, map, marker, infoWindow;
 
-        //Start date of desired stacation
-        startDate = "";
+    // Selected City -determined BY and returned FROM the API
+    cityName = "";
+
+    // This comes -determend FOR and sent TO the API
+    queryLocation = "";
+
+    //Start date of desired stacation
+    startDate = "";
 
     //End date of desired stacation
     endDate = "";
@@ -43,7 +50,8 @@ $(document).ready(function () {
 
     //Controles program logic
     function controller() {
-        weatherRequest()
+        locationButtons()
+        // weatherRequest()
         validateEmail()
     }
 
@@ -108,12 +116,24 @@ $(document).ready(function () {
         });
     }
 
+    // Functionality when locations are selected
+    function locationButtons() {
+        // Adding a click event listener to all elements with a class of "locationBtn"
+        $(document).on("click", ".locationBtn", setLocationInfo);
+        function setLocationInfo() {
+            queryLocation = $(this).val();
+            weatherRequest();
+        };
+    };
+
 
 
     //Bring back weather API
     function weatherRequest() {
         var APIKey = "f14d227760b4a41dd4df09b8f308252e";
-        var queryLocation = "denver";
+        // console.log('queryLocation =' + queryLocation);
+        var currentWeather = "";
+        var forecastWeather = "";
 
         // Current Weather Data URL
         var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + queryLocation + "&units=imperial&appid=" + APIKey;
@@ -122,27 +142,11 @@ $(document).ready(function () {
         var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + queryLocation + "&units=imperial&appid=" + APIKey;
 
         // WeatherWidget Variables
-        var cityName = "";
-        var currentTemp = "";
-        var currentWind = "";
-        var currentDescription = "";
-        var currentIcon = "";
-        var icon30 = "";
-        var icon60 = "";
-        var icon90 = "";
-        var icon120 = "";
-        var high30 = "";
-        var high60 = "";
-        var high90 = "";
-        var high120 = "";
-        var low30 = "";
-        var low60 = "";
-        var low90 = "";
-        var low120 = "";
-        var description30 = "";
-        var description60 = "";
-        var description90 = "";
-        var description120 = "";
+        // These come from the weatherURL
+        var currentTemp, currentWind, currentDescription, currentIcon;
+        // These come from the forcastURL
+        var timestamp24, timestamp48, timestamp72, timestamp96, timestamp120, icon24, icon48, icon72, icon96, icon120, high24, high48, high72, high96, high120, low24, low48, low72, low96, low120, description24, description48, description72, description96, description120;
+
 
         // for current weather
         $.ajax({
@@ -150,18 +154,26 @@ $(document).ready(function () {
             method: "GET"
         })
             .then(function (response) {
-                console.log(weatherURL);
-                console.log(response);
+                // console.log(weatherURL);
+                // console.log(response);
                 cityName = response.name;
-                console.log('cityName =' + cityName);
+                prettyName = cityName.toUpperCase();
+                // console.log('cityName =' + cityName);
                 currentTemp = response.main.temp;
-                console.log('currentTemp =' + currentTemp);
+                // console.log('currentTemp =' + currentTemp);
                 currentWind = response.wind.speed;
-                console.log('currentWind =' + currentWind);
+                // console.log('currentWind =' + currentWind);
                 currentDescription = response.weather[0].description;
-                console.log('currentDescription =' + currentDescription);
-                currentIcon = response.weather[0].icon;
-                console.log('currentIcon =' + currentIcon);
+                // console.log('currentDescription =' + currentDescription);
+                currentIcon = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+                // console.log(currentIcon);
+
+                currentWeather = "<tr><td><strong>" + prettyName + "</strong><img src ='" + currentIcon + "' alt ='Weather Icon'><br> Currently: " + currentTemp + "&#8457 <br> Wind: " + currentWind + " mph <br>" + currentDescription + "</td>";
+                console.log('currentWeather HTML =' + currentWeather);
+
+                // Adding the currentWeather to the table
+                $("#weatherWidget").html(currentWeather);
+
             });
 
 
@@ -171,39 +183,68 @@ $(document).ready(function () {
             method: "GET"
         })
             .then(function (response) {
-                // Log the forecastURL
-                console.log("forecastURL= " + forecastURL);
-                icon30 = "";
-                icon60 = "";
-                icon90 = "";
-                icon120 = "";
-                high30 = "";
-                high60 = "";
-                high90 = "";
-                high120 = "";
-                low30 = "";
-                low60 = "";
-                low90 = "";
-                low120 = "";
-                description30 = "";
-                description60 = "";
-                description90 = "";
-                description120 = "";
-                
+                // console.log("forecastURL= " + forecastURL);
+                timestamp24 = moment.unix(response.list[8].dt).format("MMM DD");
+                // console.log('timestamp24 =' + timestamp24);
+                timestamp48 = moment.unix(response.list[16].dt).format("MMM DD");
+                // console.log('timestamp48 =' + timestamp48);
+                timestamp72 = moment.unix(response.list[24].dt).format("MMM DD");
+                // console.log('timestamp72 =' + timestamp72);
+                timestamp96 = moment.unix(response.list[32].dt).format("MMM DD");
+                // console.log('timestamp96 =' + timestamp96);
+                timestamp120 = moment.unix(response.list[response.list.length - 1].dt).format("MMM DD");
+                // console.log('timestamp120 =' + timestamp120);
 
-                    // Transfer content to HTML
+                icon24 = "http://openweathermap.org/img/w/" + response.list[8].weather[0].icon + ".png"
+                // console.log(icon24);
+                icon48 = "http://openweathermap.org/img/w/" + response.list[16].weather[0].icon + ".png"
+                // console.log(icon48);
+                icon72 = "http://openweathermap.org/img/w/" + response.list[24].weather[0].icon + ".png"
+                // console.log(icon72);
+                icon96 = "http://openweathermap.org/img/w/" + response.list[32].weather[0].icon + ".png"
+                // console.log(icon96);
+                icon120 = "http://openweathermap.org/img/w/" + response.list[response.list.length - 1].weather[0].icon + ".png"
+                // console.log(icon120);
+                high24 = response.list[8].main.temp_max;
+                // console.log(high24);
+                high48 = response.list[16].main.temp_max;
+                // console.log(high48);
+                high72 = response.list[24].main.temp_max;
+                // console.log(high72);
+                high96 = response.list[32].main.temp_max;
+                // console.log(high96);
+                high120 = response.list[response.list.length - 1].main.temp_max;
+                // console.log(high120);
+                low24 = response.list[8].main.temp_min;
+                // console.log(low24);
+                low48 = response.list[16].main.temp_min;
+                // console.log(low48);
+                low72 = response.list[24].main.temp_min;
+                // console.log(low72);
+                low96 = response.list[32].main.temp_min;
+                // console.log(low96);
+                low120 = response.list[response.list.length - 1].main.temp_min;
+                // console.log(low120);
+                description24 = response.list[8].weather[0].description;
+                // console.log(description24);
+                description48 = response.list[16].weather[0].description;
+                // console.log(description48);
+                description72 = response.list[24].weather[0].description;
+                // console.log(description72);
+                description96 = response.list[32].weather[0].description;
+                // console.log(description96);
+                description120 = response.list[response.list.length - 1].weather[0].description;
+                // console.log(description120);
 
+                // Transfer content to HTML
+                // $("#temperature").html(response.main.temp);
+                // $("#pressure").html(response.main.pressure);
+                // $("#humidity").html(response.main.humidity);
 
-                    $("#temperature").html(response.main.temp);
-                $("#pressure").html(response.main.pressure);
-                $("#humidity").html(response.main.humidity);
-
-                console.log("Wind Speed: " + response.wind.speed);
-                console.log("Humidity: " + response.main.humidity);
-                console.log("Temperature (F): " + response.main.temp);
             });
         // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
     }
+
 
     // Push location specific weather data to weatherWidgets
     function outputLocations() {
