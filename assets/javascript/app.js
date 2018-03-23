@@ -7,8 +7,8 @@ $(document).ready(function () {
     //Variables Declaration 
     var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail,// options, map, marker, infoWindow;
 
-    //Start date of desired stacation
-    startDate = "";
+        //Start date of desired stacation
+        startDate = "";
 
     //End date of desired stacation
     endDate = "";
@@ -43,9 +43,8 @@ $(document).ready(function () {
 
     //Controles program logic
     function controller() {
-
-        friendlyCalendar();
-        filterOptions();
+        weatherRequest()
+        validateEmail()
     }
 
     //User input verification for date format
@@ -80,11 +79,6 @@ $(document).ready(function () {
         return true;
     }
 
-    //Stores user input dates
-    function storeDates() {
-
-    }
-
     //Uses Moment JS to add max and min dates to calendar & make it more user friendly;
     function friendlyCalendar() {
         currentDate = moment().format("YYYY-MM-DD");
@@ -99,42 +93,130 @@ $(document).ready(function () {
 
         $("#warmOrCold").change(function () {
             filterChoice = $(this).val();
-            
+
             //warm is 1 and cold is 2
             if (filterChoice === "1") {
-                $("#coldActivities").hide ();
-                $("#warmActivities").show ();                
+                $("#coldActivities").hide();
+                $("#warmActivities").show();
             } else if (filterChoice === "2") {
-                $("#warmActivities").hide ();
-                $("#coldActivities").show ();
+                $("#warmActivities").hide();
+                $("#coldActivities").show();
             } else {
-                $("#coldActivities").hide ();
-                $("#warmActivities").hide ();
+                $("#coldActivities").hide();
+                $("#warmActivities").hide();
             }
         });
     }
 
+
+
     //Bring back weather API
     function weatherRequest() {
+        var APIKey = "f14d227760b4a41dd4df09b8f308252e";
+        var queryLocation = "denver";
 
+        // Current Weather Data URL
+        var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + queryLocation + "&units=imperial&appid=" + APIKey;
+
+        // Future Forecast URL
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + queryLocation + "&units=imperial&appid=" + APIKey;
+
+        // WeatherWidget Variables
+        var cityName = "";
+        var currentTemp = "";
+        var currentWind = "";
+        var currentDescription = "";
+        var currentIcon = "";
+        var icon30 = "";
+        var icon60 = "";
+        var icon90 = "";
+        var icon120 = "";
+        var high30 = "";
+        var high60 = "";
+        var high90 = "";
+        var high120 = "";
+        var low30 = "";
+        var low60 = "";
+        var low90 = "";
+        var low120 = "";
+        var description30 = "";
+        var description60 = "";
+        var description90 = "";
+        var description120 = "";
+
+        // for current weather
+        $.ajax({
+            url: weatherURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                console.log(weatherURL);
+                console.log(response);
+                cityName = response.name;
+                console.log('cityName =' + cityName);
+                currentTemp = response.main.temp;
+                console.log('currentTemp =' + currentTemp);
+                currentWind = response.wind.speed;
+                console.log('currentWind =' + currentWind);
+                currentDescription = response.weather[0].description;
+                console.log('currentDescription =' + currentDescription);
+                currentIcon = response.weather[0].icon;
+                console.log('currentIcon =' + currentIcon);
+            });
+
+
+        // for forecasted weather
+        $.ajax({
+            url: forecastURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                // Log the forecastURL
+                console.log("forecastURL= " + forecastURL);
+                icon30 = "";
+                icon60 = "";
+                icon90 = "";
+                icon120 = "";
+                high30 = "";
+                high60 = "";
+                high90 = "";
+                high120 = "";
+                low30 = "";
+                low60 = "";
+                low90 = "";
+                low120 = "";
+                description30 = "";
+                description60 = "";
+                description90 = "";
+                description120 = "";
+                
+
+                    // Transfer content to HTML
+
+
+                    $("#temperature").html(response.main.temp);
+                $("#pressure").html(response.main.pressure);
+                $("#humidity").html(response.main.humidity);
+
+                console.log("Wind Speed: " + response.wind.speed);
+                console.log("Humidity: " + response.main.humidity);
+                console.log("Temperature (F): " + response.main.temp);
+            });
+        // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
     }
 
-    //Bring back map API
-    function mapRequest() {
-      
-    }
-
-    //Creates location/marker suggestions
-    function suggestLocations() {
-
-}
-    //Populates location suggestions
+    // Push location specific weather data to weatherWidgets
     function outputLocations() {
 
     }
 
+    //Pin locations to map as they are selected by user
+    function mapRequest() {
+
+    }
+
     //Expands location suggestions
-    function expandSuggestion() {fvalid
+    function expandSuggestion() {
 
     }
 
@@ -143,6 +225,7 @@ $(document).ready(function () {
         function isEmail(email) {
             var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             return regex.test(email);
+            console.log('?? =' + regex.test(email));
         }
     }
 

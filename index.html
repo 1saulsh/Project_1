@@ -13,6 +13,10 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
 
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
     <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
     <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
 
@@ -25,14 +29,13 @@
 
 <body>
     <div class="container">
-        <div class="jumbo text-center">
+        <div class="jumbo text-center pb-2">
             <h1 class="display-4 font-weight-bold text-center">StayCO</h1>
 
             <p class="tag-line text-center"> Embracing Colorado Weather One Day at a Time</p>
             <img class="stayCoImg" src="./assets/images/bluTxt-StayCO.jpg" alt="stayCO Logo">
             <hr class="my-4">
-            <h4>Pick a Colorado travel destination based on the upcoming weather</h4>
-            <p class="lead">Colorado Hotspots to Pick From:</p>
+            <h4> Compare weather forecast of popular Colorado travel destinations so you can plan your trip</h4>
 
             <!-- Calendar Form -->
             <!-- <form action="/action_page.php">
@@ -69,65 +72,65 @@
                             </select>
                         </form> -->
 
-                        <!-- Cold Weather Activities Form -->
-                        <form method="get" class="text-left" id="hotspots">
+
+                        <form method="get" class="lead text-left" id="hotspots">
                             Colorado Hotspots for you to choose from:
-                            <div multiple class="custom-select">
-                                    <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="1"> Aspen
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="2"> Boulder
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="3"> Breckenridge
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="4"> Denver
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="5"> Dillon
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="6"> Durango
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="7"> Estes Park
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="8"> Golden
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="9"> Grand Junction
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="10"> Pueblo
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="11"> Steamboat
-                                            </div>
-                                            <div class="col">
-                                                <input type="checkbox" name="warm" value="12"> Vail
-                                            </div>
-                                        </div> 
-                                
-                                <div class="form-group row mt-1 text-right">
+                            <div class="Options">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="1"> Aspen
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="2"> Boulder
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="3"> Breckenridge
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="4"> Denver
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="5"> Dillon
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="6"> Durango
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="7"> Estes Park
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="8"> Golden
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="9"> Grand Junction
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="10"> Pueblo
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="11"> Steamboat
+                                    </div>
+                                    <div class="col">
+                                        <input type="checkbox" name="warm" value="12"> Vail
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group row mt-1 text-right">
                                     <label for="inputOther" class="col-sm-2 col-form-label">Other:</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="inputOther">
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </form>
-                        <br>
-                        <!--  Activities Form -->
+
+                        <!-- <br>
                         <form method="get" class="text-left" id="warmActivities">
                             What Activities Are You Interested In?
                             <div multiple class="custom-select">
@@ -182,177 +185,320 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                     <div class="col"></div>
                 </div>
             </div>
 
 
-            <div>
+            <!-- <div>
                 <div class="row">
                     <div class="col">
                         <a class="btn btn-danger btn-lg my-2" href="#" role="button">Submit</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="location p-2 m-1">
-            <h3>Location Section - This will not be visible until dates are selected</h3>
-            <!--<h2>Location 1</h2>
-            <h2>Location 2</h2>
-            <h2>Location 3</h2> -->
-
             <h2>My Google Map</h2>
             <div id="map">
-
             </div>
         </div>
 
-        <div class="activities p-2 m-1">
-            <h3>Activities Section - This will not be visible until location is selected ?? </h3>
-            <h2>Activity 1</h2>
-            <h2>Activity 2</h2>
-            <h2>Activity 3</h2>
+        <div class="card">
+            <div class="card-header weather p-2 mt-1 mx-1 text-left">
+                <h4>Weather Information</h4>
+            </div>
+            <div id="weatherView" class="card-body">
+                <!-- <<This is what i want it to create for each Weather button >> -->
+                <div class="newWeather row">
+                    <table class="table table-hover" id='train-table'>
+                        <tbody id=weatherWidget>
+                            <tr>
+                                <td>
+                                    <strong>DENVER</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> Currently: 79&#8457
+                                    <br> Wind: 10 mph
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>30 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>60 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>90 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>120 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>BOULDER</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> Currently: 79&#8457
+                                    <br> Wind: 10 mph
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>30 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>60 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>90 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>120 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>ASPEN</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> Currently: 79&#8457
+                                    <br> Wind: 10 mph
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>30 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>60 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>90 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                                <td>
+                                    <strong>120 Hours</strong>
+                                    <img src="http://openweathermap.org/img/w/01d.png">
+                                    <br> High: 79&#8457
+                                    <br> Low: 59&#8457
+                                    <br> Light Clouds
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <!-- <h4>Denver</h4>
+                    <div class="col-4 insideWeather">
+                        <img id="weather_image" src="http://openweathermap.org/img/w/01d.png">
+                    </div>
+                    <div class="col-8 insideWeather">
+                        <h5>Currently:
+                            <p></p>
+                        </h5>
+                    </div>
+                    <div class="col insideWeather">
+                        <h5>Description:
+                            <span id="description_weather"></span>
+                        </h5>
+                    </div>
+                    <div class="col insideWeather">
+                        <h5>Temperature:
+                            <span id="temperature"></span>
+                        </h5>
+
+                    </div>
+                    <div class="col">
+                        <h5>Pressure:
+                            <span id="pressure"></span>
+                        </h5>
+                        <h5>Humidity:
+                            <span id="humidity"></span>
+                        </h5>
+                    </div> -->
+                </div>
+            </div>
         </div>
 
         <div class="email p-2 m-1">
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
-                        <label for="inlineFormInputGroup">Enter Your Email Address for Future Updates:</label>
+                        <label>Enter Your Email Address for Future Updates:</label>
                         <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
                         <small class="form-text">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="col-auto">
                         <button type="submit" class="btn btn-danger">Submit</button>
                     </div>
+                </div>
             </form>
-            </div>
-
         </div>
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-        <script src="./assets/javascript/app.js"></script>
 
-        <script>
-            function initMap() {
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="./assets/javascript/app.js"></script>
 
-                //Map options
-                var options = {
-                    zoom: 8,
-                    center: { lat: 39.5501, lng: -105.7821 }
-                }
+    <script>
+        function initMap() {
 
-                //New Map
-                var map = new google.maps.Map(document.getElementById("map"), options);
+            //Map options
+            var options = {
+                zoom: 8,
+                center: { lat: 39.5501, lng: -105.7821 }
+            }
 
-                /*
-                //Add marker
+            //New Map
+            var map = new google.maps.Map(document.getElementById("map"), options);
+
+            /*
+            //Add marker
+            var marker = new google.maps.Marker({
+                position: {lat:39.7392, lng:-104.9903},
+                map:map
+                });
+ 
+            var infoWindow = new google.maps.InfoWindow({
+                content:"<h1>Denver, CO</h1>"
+                });
+            
+            marker.addListener("click", function(){
+                infoWindow.open(map, marker);
+                });
+            */
+
+            //Array of Markers
+
+            var markers = [{
+                coords: { lat: 39.19110, lng: -106.81750 },
+                content: "<h1>Aspen, CO</h1>"
+            },
+            {
+                coords: { lat: 40.01500, lng: -105.27050 },
+                content: "<h1>Boulder, CO</h1>"
+            },
+            {
+                coords: { lat: 39.48170, lng: -106.03840 },
+                content: "<h1>Breckenridge, CO</h1>"
+            },
+            {
+                coords: { lat: 39.7392, lng: -104.9903 },
+                content: "<h1>Denver, CO</h1>"
+            },
+            {
+                coords: { lat: 39.63030, lng: -106.04340 },
+                content: "<h1>Dillon, CO</h1>"
+            },
+            {
+                coords: { lat: 37.27530, lng: -107.88010 },
+                content: "<h1>Durango, CO</h1>"
+            },
+            {
+                coords: { lat: 40.37720, lng: -105.52170 },
+                content: "<h1>Estes Park, CO</h1>"
+            },
+            {
+                coords: { lat: 39.75550, lng: -105.22110 },
+                content: "<h1>Golden, CO</h1>"
+            },
+            {
+                coords: { lat: 39.06390, lng: -108.55060 },
+                content: "<h1>Grand Junction, CO</h1>"
+            },
+            {
+                coords: { lat: 38.2544, lng: -104.6091 },
+                content: "<h1>Pueblo, CO</h1>"
+            },
+            {
+                coords: { lat: 40.48500, lng: -106.83170 },
+                content: "<h1>Steamboat, CO</h1>"
+            },
+            {
+                coords: { lat: 39.64030, lng: -106.37420 },
+                content: "<h1>Vail, CO</h1>"
+            }
+            ];
+
+            //Loop through markers and for each iteration add marker 1
+            for (var i = 0; i < markers.length; i++) {
+
+                //Add Marker
+                addMarker(markers[i]);
+
+            }
+
+            //Add Marker Function
+            function addMarker(props) {
                 var marker = new google.maps.Marker({
-                    position: {lat:39.7392, lng:-104.9903},
-                    map:map
+                    position: props.coords,
+                    map: map,
+                });
+
+                // Check content
+                if (props.content) {
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: props.content
                     });
 
-                var infoWindow = new google.maps.InfoWindow({
-                    content:"<h1>Denver, CO</h1>"
+                    marker.addListener("click", function () {
+                        infoWindow.open(map, marker);
                     });
-                
-                marker.addListener("click", function(){
-                    infoWindow.open(map, marker);
-                    });
-                */
-
-                //Array of Markers
-
-    var markers = [{
-        coords: { lat: 39.19110, lng: -106.81750 },
-        content: "<h1>Aspen, CO</h1>"
-    },
-    {
-        coords: { lat: 40.01500, lng: -105.27050 },
-        content: "<h1>Boulder, CO</h1>"
-    },
-    {
-        coords: { lat: 39.48170, lng: -106.03840 },
-        content: "<h1>Breckenridge, CO</h1>"
-    },
-    {
-        coords: { lat: 39.7392, lng: -104.9903 },
-        content: "<h1>Denver, CO</h1>"
-    },
-    {
-        coords: { lat: 39.63030, lng: -106.04340 },
-        content: "<h1>Dillon, CO</h1>"
-    },
-    {
-        coords: { lat: 37.27530, lng: -107.88010 },
-        content: "<h1>Durango, CO</h1>"
-    },
-    {
-        coords: { lat: 40.37720, lng: -105.52170 },
-        content: "<h1>Estes Park, CO</h1>"
-    },
-    {
-        coords: { lat: 39.75550, lng: -105.22110 },
-        content: "<h1>Golden, CO</h1>"
-    },
-    {
-        coords: { lat: 39.06390, lng: -108.55060 },
-        content: "<h1>Grand Junction, CO</h1>"
-    },
-    {
-        coords: { lat: 38.2544, lng: -104.6091 },
-        content: "<h1>Pueblo, CO</h1>"
-    },
-    {
-        coords: { lat: 40.48500, lng: -106.83170 },
-        content: "<h1>Steamboat, CO</h1>"
-    },
-    {
-        coords: { lat: 39.64030, lng: -106.37420 },
-        content: "<h1>Vail, CO</h1>"
-    }
-    ];
-
-                //Loop through markers and for each iteration add marker 1
-                for (var i = 0; i < markers.length; i++) {
-
-                    //Add Marker
-                    addMarker(markers[i]);
-
-                }
-
-                //Add Marker Function
-                function addMarker(props) {
-                    var marker = new google.maps.Marker({
-                        position: props.coords,
-                        map: map,
-                    });
-
-                    // Check content
-                    if (props.content) {
-                        var infoWindow = new google.maps.InfoWindow({
-                            content: props.content
-                        });
-
-                        marker.addListener("click", function () {
-                            infoWindow.open(map, marker);
-                        });
-                    }
                 }
             }
-        </script>
+        }
+    </script>
 
-        <!--GoogleMaps API script-->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
-        </script>
+    <!--GoogleMaps API script-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
+    </script>
 
 </body>
 

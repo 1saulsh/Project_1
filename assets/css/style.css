@@ -1,6 +1,6 @@
 body {
-    background-image: url(../images/mountains.jpg);
-    background-repeat: no-repeat;
+    /* background-image: url(../images/mountains.jpg); */
+    /* background-repeat: ; */
     background-position-x: center;
     background-size: auto 1300px;
 }
@@ -9,22 +9,26 @@ body {
 .jumbo, .email {
     background:rgba(0, 54, 80, 0.65);
     color: white;
+    border-radius: 5px;
 }
 
 .location {
     margin-top: 5px;
     background:rgba(191,44,52, 0.65);
     color: white;
+    border-radius: 5px;
 }
 
-.activities {
+.weather {
     background:rgba(246,208,71, 0.65);
     color: black;
+    border-radius: 5px;
 }
 
 
 .stayCoImg {
-    height: 250px;
+    height: 200px;
+    border-radius: 5px;
 }
 
 .tag-line {
@@ -39,6 +43,27 @@ h1 {
     color:navy;
 }
 
-#warmActivities {
-    display: none;
+.Options {
+    padding: 10px;
+    background: rgba(191,44,52, 0.85);
+    border-radius: 5px; 
+}
+
+.card-header {
+    margin-bottom: -11px;
+}
+
+.newWeather {
+    border: brown 1px solid;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background: lightgoldenrodyellow;
+}
+
+.insideWeather {
+    border-right: lightgray 1px solid;
+}
+
+.insideWeather h4 {
+    text-decoration: underline wavy;
 }
