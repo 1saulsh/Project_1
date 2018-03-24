@@ -1,6 +1,7 @@
 $(document).ready(function () {
     // The controller function calls the functions in the desired order
     controller();
+    mapsRequest();
 
 
 
@@ -50,9 +51,9 @@ $(document).ready(function () {
 
     //Controles program logic
     function controller() {
-        locationButtons()
+        locationButtons();
         // weatherRequest()
-        validateEmail()
+        validateEmail();
     }
 
     //User input verification for date format
@@ -244,15 +245,87 @@ $(document).ready(function () {
             });
         // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
     }
+  
+    
+     //Pin locations to map as they are selected by use
+    function mapsRequest() {
+        /*TODO
+        have our map page grab onto the maps id in html so it will show up
+        */
+        var APIKey = "AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto";
+       
+        var queryURL = "https://maps.googleapis.com/maps/api/js?key=" + APIKey + "&callback=mapsRequest";
+
+        // will hold our coords// order of coords list aspen, boulder, breckenridge, denver, dillon, durango, estes, golden, grandjunction, pueblo, steamboat, vail
+        var markers = [{lat: 40.01500, lng: -105.27050}, {lat: 39.48170, lng: -106.03840}, {lat: 39.7392, lng: -104.9903}, {lat: 39.7392, lng: -104.9903 }, {lat: 39.63030, lng: -106.04340 }, {lat: 37.27530, lng: -107.88010 }, {lat: 40.37720, lng: -105.52170}, {lat: 39.75550, lng: -105.22110}, {lat: 39.06390, lng: -108.55060}, {lat: 38.2544, lng: -104.6091}, {lat: 40.48500, lng: -106.83170}, {lat: 39.64030, lng: -106.37420}];
+       
+        //Map options        
+       
+        //New Map
+        var options = {
+            zoom: 8,
+            center: {lat: 39.5501, lng: -105.7821}
+        }
+
+        var map = new google.maps.Map($('#map'), options);
+        
+
+        var cities = _.object(['Aspen'], ['Boulder'], ['Breckenridge'], ['Dillon'], ['Durnago'], ['Estes Park'], ['Golden'], ['Grand Junction'], ['Pueblo'], ['Steamboat'], ['Vail']);
+    
+         
+        //Add marker
+        var marker = new google.maps.Marker({
+            position: {lat:39.7392, lng:-104.9903},
+            map:map
+            });
+
+        var infoWindow = new google.maps.InfoWindow({
+            content:"<h1>Denver, CO</h1>"
+            });
+        
+        marker.addListener("click", function(){
+            infoWindow.open(map, marker);
+            });
+        
+        
+        //Loop through markers and for each iteration add marker 1
+
+        for (var i = 0; i < markers.length; i++) {
+
+            //Add Marker
+            addMarker(markers[i]);
+        }
+
+        //Add Marker Function
+        function addMarker(props) {
+            var marker = new google.maps.Marker({
+                position: props.coords,
+                map: map,
+            });
+
+            // Check content
+            if (props.content) {
+                var infoWindow = new google.maps.InfoWindow({
+                    content: props.content
+                });
+
+                marker.addListener("click", function () {
+                    infoWindow.open(map, marker);
+                });
+            }
+        }
+       
+    }
+    map();
+    console.log(map);
+    console.log(mapsRequest);
+    console.log(addMarker);
+
+});  
 
 
     // Push location specific weather data to weatherWidgets
     function outputLocations() {
-
-    }
-
-    //Pin locations to map as they are selected by user
-    function mapRequest() {
 
     }
 
@@ -275,4 +348,4 @@ $(document).ready(function () {
 
     }
 
-}); //ends the "document.ready" code
+//ends the "document.ready" code
