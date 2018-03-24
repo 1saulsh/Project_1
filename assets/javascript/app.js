@@ -38,21 +38,18 @@ $(document).ready(function () {
 
     //Location suggestion 1 identified by a marker
     /*addMarker = "";
-
     //Location suggestion 2
     addMarker = "";
-
     //Location suggestion 3
     addMarker = "";
-
 */
     //Functions Declaration
 
     //Controles program logic
     function controller() {
         locationButtons()
-        // weatherRequest()
         validateEmail()
+
     }
 
     //User input verification for date format
@@ -121,6 +118,7 @@ $(document).ready(function () {
         // Adding a click event listener to all elements with a class of "locationBtn"
         $(document).on("click", ".locationBtn", setLocationInfo);
         function setLocationInfo() {
+            $("#selectMessage").hide ();
             queryLocation = $(this).val();
             weatherRequest();
 
@@ -149,9 +147,9 @@ $(document).ready(function () {
         var timestamp24, timestamp48, timestamp72, timestamp96, timestamp120, icon24, icon48, icon72, icon96, icon120, high24, high48, high72, high96, high120, low24, low48, low72, low96, low120, description24, description48, description72, description96, description120;
 
 
-        
-            firstWeather();
-        
+
+        firstWeather();
+
 
         // Creates a new row to store location based weather
         var weatherRow = $("<tr>");
@@ -276,7 +274,15 @@ $(document).ready(function () {
 
     //Pin locations to map as they are selected by user
     function mapRequest() {
+    }
 
+    //scrolls to another location when you click
+    function smoothScroll() {
+        $("button").click(function() {
+            $('html,body').animate({
+                scrollTop: $(".jumbo").offset().top},
+                'slow');
+        });
     }
 
     //Expands location suggestions
