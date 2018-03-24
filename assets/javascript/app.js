@@ -84,44 +84,29 @@ $(document).ready(function () {
         return true;
     }
 
-    //Uses Moment JS to add max and min dates to calendar & make it more user friendly;
-    function friendlyCalendar() {
-        currentDate = moment().format("YYYY-MM-DD");
-        maxDate = moment(currentDate).add(4, "days").format("YYYY-MM-DD");
-        $("#startDate").attr({ "min": currentDate, "value": currentDate });
-        $("#endDate").attr({ "min": currentDate, "value": currentDate });
-    };
-
-    //Populates activity options based on user input
-    function filterOptions() {
-        var filterChoice = "";
-
-        $("#warmOrCold").change(function () {
-            filterChoice = $(this).val();
-
-            //warm is 1 and cold is 2
-            if (filterChoice === "1") {
-                $("#coldActivities").hide();
-                $("#warmActivities").show();
-            } else if (filterChoice === "2") {
-                $("#warmActivities").hide();
-                $("#coldActivities").show();
-            } else {
-                $("#coldActivities").hide();
-                $("#warmActivities").hide();
-            }
-        });
-    }
+    // Functionality when locations are selected
+    // function locationButtons() {
+    //     // Adding an event listener to all checkboxes with a class of "locationBtn"
+    //     $(":checkbox").change(function () {
+    //         if (this.checked) {
+    //             function setLocationInfo() {
+    //                 $("#selectMessage").hide();
+    //                 queryLocation = $(this).val();
+    //                 weatherRequest();
+    //             }
+    //         } else if (this.unchecked) {
+    //             alert("unchecked");
+    //             //remove the location from weather
+    //         }
 
     // Functionality when locations are selected
     function locationButtons() {
         // Adding a click event listener to all elements with a class of "locationBtn"
         $(document).on("click", ".locationBtn", setLocationInfo);
         function setLocationInfo() {
-            $("#selectMessage").hide ();
+            $("#selectMessage").hide();
             queryLocation = $(this).val();
             weatherRequest();
-
         };
     };
 
@@ -149,7 +134,6 @@ $(document).ready(function () {
 
 
         firstWeather();
-
 
         // Creates a new row to store location based weather
         var weatherRow = $("<tr>");
@@ -269,25 +253,14 @@ $(document).ready(function () {
 
     // Push location specific weather data to weatherWidgets
     function outputLocations() {
-
     }
 
     //Pin locations to map as they are selected by user
     function mapRequest() {
     }
 
-    //scrolls to another location when you click
-    function smoothScroll() {
-        $("button").click(function() {
-            $('html,body').animate({
-                scrollTop: $(".jumbo").offset().top},
-                'slow');
-        });
-    }
-
     //Expands location suggestions
     function expandSuggestion() {
-
     }
 
     //User input verification for email format
