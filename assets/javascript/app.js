@@ -85,30 +85,30 @@ $(document).ready(function () {
     }
 
     // Functionality when locations are selected
-    // function locationButtons() {
-    //     // Adding an event listener to all checkboxes with a class of "locationBtn"
-    //     $(":checkbox").change(function () {
-    //         if (this.checked) {
-    //             function setLocationInfo() {
-    //                 $("#selectMessage").hide();
-    //                 queryLocation = $(this).val();
-    //                 weatherRequest();
-    //             }
-    //         } else if (this.unchecked) {
-    //             alert("unchecked");
-    //             //remove the location from weather
-    //         }
+    function locationButtons() {
+        // Adding an event listener to all checkboxes with a class of "locationBtn"
+        $(":checkbox").change(function () {
+            if (this.checked) {
+                $("#selectMessage").hide();
+                queryLocation = $(this).val();
+                weatherRequest();
+            } else {
+                alert("unchecked");
+                //remove the location from weather
+            };
+        })
+    }
 
     // Functionality when locations are selected
-    function locationButtons() {
-        // Adding a click event listener to all elements with a class of "locationBtn"
-        $(document).on("click", ".locationBtn", setLocationInfo);
-        function setLocationInfo() {
-            $("#selectMessage").hide();
-            queryLocation = $(this).val();
-            weatherRequest();
-        };
-    };
+    // function locationButtons() {
+    //     // Adding a click event listener to all elements with a class of "locationBtn"
+    //     $(document).on("click", ".locationBtn", setLocationInfo);
+    //     function setLocationInfo() {
+    //         $("#selectMessage").hide();
+    //         queryLocation = $(this).val();
+    //         weatherRequest();
+    //     };
+    // };
 
 
 
@@ -137,6 +137,7 @@ $(document).ready(function () {
 
         // Creates a new row to store location based weather
         var weatherRow = $("<tr>");
+        // var weatherRow = $("<tr id='"+ prettyName +"'>");
         console.log('weatherRow =' + weatherRow);
 
         // Adding the currentWeather to the table
