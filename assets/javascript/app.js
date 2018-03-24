@@ -248,15 +248,15 @@ $(document).ready(function () {
                     description120 = response.list[response.list.length - 1].weather[0].description;
                     // console.log(description120);
 
-                    forecastWeather24 = "<td><strong>" + timestamp24 + "</strong><img src ='" + icon24 + "' alt ='Weather Icon'><br> High: " + high24 + "&#8457 <br> Low: " + low24 + "&#8457 <br> Description: " + description24 + "</td>";
+                    forecastWeather24 = "<td><strong>" + timestamp24 + "</strong><img src ='" + icon24 + "' alt ='Weather Icon'><br> High: " + high24 + "&#8457 <br> Low: " + low24 + "&#8457 <br>" + description24 + "</td>";
 
-                    forecastWeather48 = "<td><strong>" + timestamp48 + "</strong><img src ='" + icon48 + "' alt ='Weather Icon'><br> High: " + high48 + "&#8457 <br> Low: " + low48 + "&#8457 <br> Description: " + description48 + "</td>";
+                    forecastWeather48 = "<td><strong>" + timestamp48 + "</strong><img src ='" + icon48 + "' alt ='Weather Icon'><br> High: " + high48 + "&#8457 <br> Low: " + low48 + "&#8457 <br>" + description48 + "</td>";
 
-                    forecastWeather72 = "<td><strong>" + timestamp72 + "</strong><img src ='" + icon72 + "' alt ='Weather Icon'><br> High: " + high72 + "&#8457 <br> Low: " + low72 + "&#8457 <br> Description: " + description72 + "</td>";
+                    forecastWeather72 = "<td><strong>" + timestamp72 + "</strong><img src ='" + icon72 + "' alt ='Weather Icon'><br> High: " + high72 + "&#8457 <br> Low: " + low72 + "&#8457 <br>" + description72 + "</td>";
 
-                    forecastWeather96 = "<td><strong>" + timestamp96 + "</strong><img src ='" + icon96 + "' alt ='Weather Icon'><br> High: " + high96 + "&#8457 <br> Low: " + low96 + "&#8457 <br> Description: " + description96 + "</td>";
+                    forecastWeather96 = "<td><strong>" + timestamp96 + "</strong><img src ='" + icon96 + "' alt ='Weather Icon'><br> High: " + high96 + "&#8457 <br> Low: " + low96 + "&#8457 <br>" + description96 + "</td>";
 
-                    forecastWeather120 = "<td><strong>" + timestamp120 + "</strong><img src ='" + icon120 + "' alt ='Weather Icon'><br> High: " + high120 + "&#8457 <br> Low: " + low120 + "&#8457 <br> Description: " + description120 + "</td></tr>";
+                    forecastWeather120 = "<td><strong>" + timestamp120 + "</strong><img src ='" + icon120 + "' alt ='Weather Icon'><br> High: " + high120 + "&#8457 <br> Low: " + low120 + "&#8457 <br>" + description120 + "</td></tr>";
 
                     forecastWeather = forecastWeather24.concat(forecastWeather48, forecastWeather72, forecastWeather96, forecastWeather120);
 
