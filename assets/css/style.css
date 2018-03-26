@@ -67,3 +67,7 @@ h1 {
 .insideWeather h4 {
     text-decoration: underline wavy;
 }
+
+#clearAll {
+    display: none;
+}

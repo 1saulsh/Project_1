@@ -5,11 +5,14 @@ $(document).ready(function () {
 
 
     //Variables Declaration 
-    var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail, cityName, queryLocation;
+    var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail, cityName, queryLocation, identifier;
     // options, map, marker, infoWindow;
 
     // Selected City -determined BY and returned FROM the API
     cityName = "";
+
+    // Used to assign an id name to each row    
+    identifier = ""
 
     // This comes -determend FOR and sent TO the API
     queryLocation = "";
@@ -49,54 +52,39 @@ $(document).ready(function () {
     function controller() {
         locationButtons()
         validateEmail()
-
     }
 
-    //User input verification for date format
-    function validateDate(txtDate) {
-        //var regex = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/
-        //return regex.test(date);
-
-        var currVal = txtDate;
-        if (currVal == '')
-            return false;
-
-        var rxDatePattern = "/^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/";
-        var dtArray = currVal.match(rxDatePattern);
-        if (dtArray == null)
-            return false;
-
-        dtMonth = dtArray[1];
-        dtDay = dtArray[3];
-        dtYear = dtArray[5];
-
-        if (dtMonth < 1 || dtMonth > 12)
-            return false;
-        else if (dtDay < 1 || dtDay > 31)
-            return false;
-        else if ((dtMonth == 4 || dtMonth == 6 || dtMonth == 9 || dtMonth == 11) && dtDay == 31)
-            return false;
-        else if (dtMonth == 2) {
-            var isleap = (dtYear % 4 == 0 && (dtYear % 100 != 0 || dtYear % 400 == 0));
-            if (dtDay > 29 || (dtDay == 29 && !isleap))
-                return false;
-        }
-        return true;
-    }
-
+    // This function handles events where a city button is clicked
+    $("#add-city").on("click", function (event) {
+        event.preventDefault();
+        // This line grabs the input from the textbox
+        var city = $("#city-input").val().trim();
+        console.log(city);
+    });
+    
     // Functionality when locations are selected
     function locationButtons() {
+        var locations = [];
         // Adding an event listener to all checkboxes with a class of "locationBtn"
         $(":checkbox").change(function () {
+            queryLocation = $(this).val();
+            identifier = $(this).attr("data-idName");
+            console.log('identifier =' + identifier);
             if (this.checked) {
                 $("#selectMessage").hide();
-                queryLocation = $(this).val();
-                weatherRequest();
+                $("#clearAll").show();
+                weatherRequest(queryLocation);
             } else {
-                alert("unchecked");
+                $("#" + identifier).empty();
+                // console.log('query location =' + queryLocation);
+
                 //remove the location from weather
             };
         })
+    }
+
+    function clearRow() {
+        //grabs the appropriate data attribute to delete the <tr>
     }
 
     // Functionality when locations are selected
@@ -113,17 +101,17 @@ $(document).ready(function () {
 
 
     //Bring back weather API
-    function weatherRequest() {
+    function weatherRequest(location) {
         var APIKey = "f14d227760b4a41dd4df09b8f308252e";
         // console.log('queryLocation =' + queryLocation);
         var currentWeather = "";
         var forecastWeather = "";
 
         // Current Weather Data URL
-        var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + queryLocation + "&units=imperial&appid=" + APIKey;
+        var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=imperial&appid=" + APIKey;
 
         // Future Forecast URL
-        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + queryLocation + "&units=imperial&appid=" + APIKey;
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=" + APIKey;
 
         // WeatherWidget Variables
         // These come from the weatherURL
@@ -136,9 +124,9 @@ $(document).ready(function () {
         firstWeather();
 
         // Creates a new row to store location based weather
-        var weatherRow = $("<tr>");
-        // var weatherRow = $("<tr id='"+ prettyName +"'>");
-        console.log('weatherRow =' + weatherRow);
+        // var weatherRow = $("<tr>");
+        var weatherRow = $("<tr id='" + identifier + "'>");
+        console.log(weatherRow);
 
         // Adding the currentWeather to the table
         $("#weatherWidget").append(weatherRow);
@@ -251,6 +239,14 @@ $(document).ready(function () {
         }
         // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
     }
+
+    // function to reset weather (& map?)
+    $("#clearAll").on("click", function (clearAll) {
+        clearAll.preventDefault();
+        $("#weatherWidget").empty();
+        $("#selectMessage").show();
+    });
+
 
     // Push location specific weather data to weatherWidgets
     function outputLocations() {
