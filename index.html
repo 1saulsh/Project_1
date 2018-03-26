@@ -396,80 +396,85 @@
         </script>
 
 <script>
-        function mapsRequest() {
-        /*TODO
-        have our map page grab onto the maps id in html so it will show up
-        */
-        var APIKey = "AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto";
-       
-        var queryURL = "https://maps.googleapis.com/maps/api/js?key=" + APIKey + "&callback=initMap";
+           var map;
+        var markers = [];
 
-        // will hold our coords// order of coords list aspen, boulder, breckenridge, denver, dillon, durango, estes, golden, grandjunction, pueblo, steamboat, vail
-        var markers = [{lat: 40.01500, lng: -105.27050}, {lat: 39.48170, lng: -106.03840}, {lat: 39.7392, lng: -104.9903}, {lat: 39.7392, lng: -104.9903 }, {lat: 39.63030, lng: -106.04340 }, {lat: 37.27530, lng: -107.88010 }, {lat: 40.37720, lng: -105.52170}, {lat: 39.75550, lng: -105.22110}, {lat: 39.06390, lng: -108.55060}, {lat: 38.2544, lng: -104.6091}, {lat: 40.48500, lng: -106.83170}, {lat: 39.64030, lng: -106.37420}];
-       
-        //Map options        
-       
-        //New Map
-        var options = {
-            zoom: 8,
-            center: {lat: 39.5501, lng: -105.7821}
-        }
-        
-        var map = new google.maps.Map($('#map'), options);
-        
+        function initMap() {
+            var colorado = {lat: 39.5501, lng: -105.7821};
+            var aspen = {lat: 39.19110, lng: -106.81750};
+            var boulder = {lat: 40.01500, lng: -105.27050};
+            var breckenridge = {lat: 39.48170, lng: -106.03840};
+            var denver = {lat: 39.7392, lng: -104.9903};
+            var dillon = {lat: 39.63030, lng: -106.04340};
+            var durango = {lat: 37.27530, lng: -107.88010};
+            var estes = {lat: 40.37720, lng: -105.52170};
+            var golden = {lat: 39.75550, lng: -105.22110};
+            var grandJunction = {lat: 39.06390, lng: -108.55060};
+            var pueblo = {lat: 38.2544, lng: -104.6091};
+            var steamboat = {lat: 40.48500, lng: -106.83170};
+            var vail = {lat: 39.64030, lng: -106.37420};
 
-        var cities = _.object(['Aspen'], ['Boulder'], ['Breckenridge'], ['Dillon'], ['Durnago'], ['Estes Park'], ['Golden'], ['Grand Junction'], ['Pueblo'], ['Steamboat'], ['Vail']);
-    
-         
-        //Add marker
-        var marker = new google.maps.Marker({
-            position: {lat:39.7392, lng:-104.9903},
-            map:map
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 7,
+                center: colorado,
+                mapTypeId: 'terrain'
             });
 
-        var infoWindow = new google.maps.InfoWindow({
-            content:"<h1>Denver, CO</h1>"
+            // This event listener will call addMarker() when the map is clicked.
+            map.addListener('click', function (event) {
+                addMarker(event.latLng);
             });
-        
-        marker.addListener("click", function(){
-            infoWindow.open(map, marker);
-            });
-        
-        
-        //Loop through markers and for each iteration add marker 1
 
-        for (var i = 0; i < markers.length; i++) {
+            // Adds a marker at the center of the map.
+            addMarker(aspen);
+            addMarker(breckenridge);
+            addMarker(denver);
+            addMarker(dillon);
+            addMarker(durango);
+            addMarker(estes);
+            addMarker(golden);
+            addMarker(grandJunction);
+            addMarker(pueblo);
+            addMarker(steamboat);
+            addMarker(vail);
 
-            //Add Marker
-            addMarker(markers[i]);
         }
 
-        //Add Marker Function
-        function addMarker(props) {
+        // Adds a marker to the map and push to the array.
+        function addMarker(location) {
             var marker = new google.maps.Marker({
-                position: props.coords,
+                position: location,
                 map: map,
             });
 
-            // Check content
-            if (props.content) {
-                var infoWindow = new google.maps.InfoWindow({
-                    content: props.content
-                });
+            markers.push(marker);
+        }
 
-                marker.addListener("click", function () {
-                    infoWindow.open(map, marker);
-                });
+        // Sets the map on all markers in the array.
+        function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
             }
-        
-        map();
-        console.log(map);
-        console.log(mapsRequest);
-        console.log(addMarker);
-   }
-         
-    }
-</script>
+        }
+
+        // Removes the markers from the map, but keeps them in the array.
+        function clearMarkers() {
+            setMapOnAll(null);
+        }
+
+        // Shows any markers currently in the array.
+        function showMarkers() {
+            setMapOnAll(map);
+        }
+
+        // Deletes all markers in the array by removing references to them.
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
+
+    </script>
+
 
 </body>
 
