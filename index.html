@@ -63,147 +63,91 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-6">
-                        <!-- <form action="select">
-                            Are You Hoping to Enjoy Warm or Cold Weather?
-                            <select class="custom-select mb-2" id="warmOrCold">
-                                <option selected value="0" id="notSelected">Select Warm or Cold Weather Activities</option>
-                                <option value="1" id="warmSelect">Warm Weather</option>
-                                <option value="2" id="coldSelect">Cold Weather</option>
-                            </select>
-                        </form> -->
-
 
                         <form method="get" class="lead text-left" id="hotspots">
                             Colorado Hotspots for you to choose from:
                             <div class="Options">
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Aspen"> Aspen
+                                        <input type="checkbox" class="locationBtn" data-idName="Aspen" value="Aspen"> Aspen
                                     </div>
                                     <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Boulder"> Boulder
+                                        <input type="checkbox" class="locationBtn" data-idName="Boulder" value="Boulder"> Boulder
                                     </div>
                                     <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Breckenridge"> Breckenridge
+                                        <input type="checkbox" class="locationBtn" data-idName="Breckenridge" value="Breckenridge"> Breckenridge
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Denver"> Denver
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" data-idName="Denver" value="Denver"> Denver
                                     </div>
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Dillon"> Dillon
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" data-idName="Dillon" value="Dillon"> Dillon
                                     </div>
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Durango"> Durango
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Estes+Park"> Estes Park
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Golden"> Golden
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Grand+Junction"> Grand Junction
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" data-idName="Durango" value="Durango"> Durango
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Pueblo"> Pueblo
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" data-idName="EstesPark" value="Estes+Park"> Estes Park
                                     </div>
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Steamboat"> Steamboat
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" data-idName="Golden" value="Golden"> Golden
                                     </div>
-                                    <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Vail"> Vail
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" data-idName="grandJunction" value="Grand+Junction"> Grand Junction
                                     </div>
                                 </div>
-
-                                <!-- <div class="form-group row mt-1 text-right">
-                                    <label for="inputOther" class="col-sm-2 col-form-label">Other:</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputOther">
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" name="Pueblo" value="Pueblo"> Pueblo
                                     </div>
-                                </div> -->
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" name="Steamboat" value="Steamboat"> Steamboat
+                                    </div>
+                                    <div class="col-lg">
+                                        <input type="checkbox" class="locationBtn" name="Vail" value="Vail"> Vail
+                                    </div>
+                                </div>
                             </div>
                         </form>
 
                         <!-- <br>
-                        <form method="get" class="text-left" id="warmActivities">
-                            What Activities Are You Interested In?
-                            <div multiple class="custom-select">
+                        <form method="get" class="lead text-left" id="search">
+                            Search for another city:
+                            <div class="Options text-center">
                                 <div class="row">
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Hiking"> Hiking
+                                    <div class="col text-right">
+                                        <label for="inputOther" class="col col-form-label">City Name:</label>
+                                    </div>
+                                    <div class="col-5 text-left">
+                                        <input type="text" class="form-control" id="inputOther" placeholder="city name">
                                     </div>
                                     <div class="col">
-                                        <input type="checkbox" name="warm" value="Biking"> Biking
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Spelunking"> Spelunking
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Zip Lining"> Zip Lining
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Sky Diving"> Sky Diving
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="4-Wheeling"> 4-Wheeling
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Skiing"> Skiing
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Sledding"> Sledding/Tubing
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Ice Skating"> Ice Skating
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Snowshoeing"> Snowshoeing
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Snowmobiling"> Snowmobiling
-                                    </div>
-                                    <div class="col">
-                                        <input type="checkbox" name="warm" value="Ice Fishing"> Ice Fishing
-                                    </div>
-                                </div>
-                                <div class="form-group row mt-1 text-right">
-                                    <label for="inputOther" class="col-sm-2 col-form-label">Other:</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputOther">
+                                        <input id="add-city" type="submit" value="Add City">
                                     </div>
                                 </div>
                             </div>
                         </form> -->
+
                     </div>
                     <div class="col"></div>
                 </div>
             </div>
-
-
-            <!-- <div>
-                <div class="row">
-                    <div class="col">
-                        <a class="btn btn-danger btn-lg my-2" href="#" role="button">Submit</a>
-                    </div>
-                </div>
-            </div> -->
         </div>
 
-        <div id="weatherDisplay" class="card">
+        <div id="weatherDisplay" class="card mt-1">
             <div class="card-header weather p-2 mt-1 mx-1 text-left">
-                <h4>Weather Information</h4>
+                <div class="row">
+                    <div class="col">
+                        <h4>Weather Information</h4>
+                    </div>
+                    <div class="col">
+                        <input id="clearAll" class="btn btn-secondary btn-sm float-right" type="submit" value="Reset">
+                    </div>
+                </div>
             </div>
             <div id="weatherView" class="card-body">
                 <div class="newWeather row">
