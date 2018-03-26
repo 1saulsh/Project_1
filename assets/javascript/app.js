@@ -59,9 +59,8 @@ $(document).ready(function () {
         event.preventDefault();
         // This line grabs the input from the textbox
         var city = $("#city-input").val().trim();
-        console.log(city);
     });
-    
+
     // Functionality when locations are selected
     function locationButtons() {
         var locations = [];
@@ -69,18 +68,27 @@ $(document).ready(function () {
         $(":checkbox").change(function () {
             queryLocation = $(this).val();
             identifier = $(this).attr("data-idName");
-            console.log('identifier =' + identifier);
             if (this.checked) {
-                $("#selectMessage").hide();
-                $("#clearAll").show();
+                showAndHide()
                 weatherRequest(queryLocation);
+                scrollToWeather();
             } else {
                 $("#" + identifier).empty();
-                // console.log('query location =' + queryLocation);
-
-                //remove the location from weather
             };
         })
+    }
+
+    // This will hide and show the appropriate things when a location is selected
+    function showAndHide() {
+        $("#selectMessage").hide();
+        $("#clearAll").show();
+        $("#weatherDisplay").show();
+    }
+
+    function scrollToWeather() {
+        $('html, body').animate({
+            scrollTop: $("#hotspots").offset().top
+        }, 2000);
     }
 
     function clearRow() {
@@ -126,7 +134,6 @@ $(document).ready(function () {
         // Creates a new row to store location based weather
         // var weatherRow = $("<tr>");
         var weatherRow = $("<tr id='" + identifier + "'>");
-        console.log(weatherRow);
 
         // Adding the currentWeather to the table
         $("#weatherWidget").append(weatherRow);
@@ -138,7 +145,7 @@ $(document).ready(function () {
                 method: "GET"
             })
                 .then(function (response) {
-                    console.log(weatherURL);
+                    // console.log(weatherURL);
                     // console.log(response);
                     cityName = response.name;
                     prettyName = cityName.toUpperCase();
