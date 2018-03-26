@@ -1,5 +1,5 @@
 body {
-    /* background-image: url(../images/mountains.jpg); */
+    background-image: url(../images/mountains.jpg);
     /* background-repeat: ; */
     background-position-x: center;
     background-size: auto 1300px;
@@ -12,11 +12,22 @@ body {
     border-radius: 5px;
 }
 
+.title {
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px white;
+}
+
 .location {
     margin-top: 5px;
     background:rgba(191,44,52, 0.65);
     color: white;
     border-radius: 5px;
+}
+
+#weatherDisplay {
+    display: none;
 }
 
 .weather {

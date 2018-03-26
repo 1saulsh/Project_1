@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
 
@@ -30,12 +31,11 @@
 <body>
     <div class="container">
         <div class="jumbo text-center pb-2">
-            <h1 class="display-4 font-weight-bold text-center">StayCO</h1>
-
+            <h1 class="title text-center">StayCO</h1>
             <p class="tag-line text-center"> Embracing Colorado Weather One Day at a Time</p>
-            <img class="stayCoImg" src="./assets/images/bluTxt-StayCO.jpg" alt="stayCO Logo">
-            <hr class="my-4">
-            <h4> Compare weather forecast of popular Colorado travel destinations so you can plan your trip</h4>
+            <img class="stayCoImg animated fadeInUpBig" src="./assets/images/bluTxt-StayCO.jpg" alt="stayCO Logo">
+            <!-- <hr class="my-4"> -->
+            <h4 class="mt-3"> Compare weather forecast of popular Colorado travel destinations so you can plan your trip</h4>
 
             <!-- Calendar Form -->
             <!-- <form action="/action_page.php">
@@ -138,7 +138,7 @@
             </div>
         </div>
 
-        <div id="weatherDisplay" class="card mt-1">
+        <div id="weatherDisplay" class="card mt-1 weather">
             <div class="card-header weather p-2 mt-1 mx-1 text-left">
                 <div class="row">
                     <div class="col">
