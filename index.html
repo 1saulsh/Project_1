@@ -283,6 +283,38 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
     </script>
 
+    <!--Firebase script-->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    $.fn.getFormData = function() {
+      var fields = this.find('[email]');
+      var result = {};
+      $.each(fields, function (i, el) {
+        result[el.email] = el.value;
+      });
+      return result;
+    };
+    var config = {
+        apiKey: "AIzaSyDArV6eE1B4jA-wTGWT0sKUmbSobhgd78U",
+        authDomain: "project-1-b6d47.firebaseapp.com",
+        databaseURL: "https://project-1-b6d47.firebaseio.com",
+        projectId: "project-1-b6d47",
+        storageBucket: "project-1-b6d47.appspot.com",
+        messagingSenderId: "137075171849"
+    };
+    firebase.initializeApp(config);
+
+    var userEmail;
+      $('.submit').on('click', function (e) {
+        e.preventDefault();
+        var updates = {};
+        userEmail = userEmail ? userEmail : fb.database().ref().child('user-data').push().key;
+        updates[userEmail] = $('form').getFormData();
+        fb.database().ref().child('user-data').update(updates);
+      });
+    </script>
+
 </body>
 
 </html>
