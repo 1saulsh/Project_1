@@ -262,13 +262,13 @@ $(document).ready(function () {
     }
 
     //User input verification for email format
-    function validateEmail() {
-        function isEmail(email) {
-            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            return regex.test(email);
-            console.log('?? =' + regex.test(email));
-        }
-    }
+    // function validateEmail() {
+    //     function isEmail(email) {
+    //         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    //         return regex.test(email);
+    //         console.log('?? =' + regex.test(email));
+    //     }
+    // }
 
     //Stores user email
     function storeEmail() {
