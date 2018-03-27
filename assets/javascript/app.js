@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
     //Variables Declaration 
-    var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail, cityName, queryLocation, identifier;
+    var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail, cityName, queryLocation, identifier, lon, lat, mapCoordinates, marker;
     // options, map, marker, infoWindow;
 
     // Selected City -determined BY and returned FROM the API
@@ -38,7 +38,22 @@ $(document).ready(function () {
     //User email
     userEmail = "";
 
+    //longitude
+    lon = "";
 
+    // latitude
+    lat = "";
+
+    // latitude and longitude together
+    mapCoordinates = "";
+
+    //formats map marker
+    marker = "";
+
+
+
+
+    
     //Location suggestion 1 identified by a marker
     /*addMarker = "";
     //Location suggestion 2
@@ -54,12 +69,14 @@ $(document).ready(function () {
         validateEmail()
     }
 
+    // <<<<<<<<<<This is an idea for the future >>>>>>>>>>>
     // This function handles events where a city button is clicked
-    $("#add-city").on("click", function (event) {
-        event.preventDefault();
-        // This line grabs the input from the textbox
-        var city = $("#city-input").val().trim();
-    });
+    // $("#add-city").on("click", function (event) {
+    //     event.preventDefault();
+    //     // This line grabs the input from the textbox
+    //     var city = $("#city-input").val().trim();
+    // });
+
 
     // Functionality when locations are selected
     function locationButtons() {
@@ -91,22 +108,6 @@ $(document).ready(function () {
         }, 2000);
     }
 
-    function clearRow() {
-        //grabs the appropriate data attribute to delete the <tr>
-    }
-
-    // Functionality when locations are selected
-    // function locationButtons() {
-    //     // Adding a click event listener to all elements with a class of "locationBtn"
-    //     $(document).on("click", ".locationBtn", setLocationInfo);
-    //     function setLocationInfo() {
-    //         $("#selectMessage").hide();
-    //         queryLocation = $(this).val();
-    //         weatherRequest();
-    //     };
-    // };
-
-
 
     //Bring back weather API
     function weatherRequest(location) {
@@ -127,8 +128,6 @@ $(document).ready(function () {
         // These come from the forcastURL
         var timestamp24, timestamp48, timestamp72, timestamp96, timestamp120, icon24, icon48, icon72, icon96, icon120, high24, high48, high72, high96, high120, low24, low48, low72, low96, low120, description24, description48, description72, description96, description120;
 
-
-
         firstWeather();
 
         // Creates a new row to store location based weather
@@ -145,26 +144,33 @@ $(document).ready(function () {
                 method: "GET"
             })
                 .then(function (response) {
-                    // console.log(weatherURL);
+                    console.log(weatherURL);
                     // console.log(response);
                     cityName = response.name;
                     prettyName = cityName.toUpperCase();
-                    // console.log('cityName =' + cityName);
                     currentTemp = response.main.temp;
-                    // console.log('currentTemp =' + currentTemp);
                     currentWind = response.wind.speed;
-                    // console.log('currentWind =' + currentWind);
                     currentDescription = response.weather[0].description;
-                    // console.log('currentDescription =' + currentDescription);
                     currentIcon = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-                    // console.log(currentIcon);
+                    lon = response.coord.lon;
+                    lat = response.coord.lat;
 
+                    //creating the table data for the currentWeather
                     currentWeather = "<td><strong>" + prettyName + "</strong><img src ='" + currentIcon + "' alt ='Weather Icon'><br> Currently: " + currentTemp + "&#8457 <br> Wind: " + currentWind + " mph <br>" + currentDescription + "</td>";
                     // console.log(currentWeather);
 
                     // Adding the currentWeather to the Table Row
                     weatherRow.append(currentWeather);
                     secondWeather();
+
+                    mapCoordinates = "{ lat: " + lon + ", lng: " + lat + " }"
+
+                    //format for marker
+                    marker = "coords: " + mapCoordinates + ",content: '<h1>" + cityName + "</h1>'}"
+                    console.log('mark =' + marker)
+
+                    markers.push(marker);
+                    console.log(markers);
 
                 });
         }
