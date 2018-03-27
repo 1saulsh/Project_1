@@ -78,7 +78,7 @@
                             <div class="Options">
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" class="locationBtn" name="warm" value="Aspen"> Aspen
+                                        <input onclick="addMarker()"; type="checkbox" class="locationBtn" name="warm" value="Aspen"> Aspen
                                     </div>
                                     <div class="col">
                                         <input type="checkbox" class="locationBtn" name="warm" value="Boulder"> Boulder
@@ -201,7 +201,7 @@
             </div> -->
         </div>
 
-<!-- maps -->
+        <!-- maps -->
 
         <div class="location p-2 m-1">
             <h2>My Google Map</h2>
@@ -209,7 +209,7 @@
             </div>
         </div>
 
-<!-- maps -->
+        <!-- maps -->
 
         <div class="card">
             <div class="card-header weather p-2 mt-1 mx-1 text-left">
@@ -392,27 +392,27 @@
     <script src="./assets/javascript/app.js"></script>
 
     <!--GoogleMaps API script-->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
-        </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
+    </script>
 
-<script>
-           var map;
+    <script>
+        var map;
         var markers = [];
 
         function initMap() {
-            var colorado = {lat: 39.5501, lng: -105.7821};
-            var aspen = {lat: 39.19110, lng: -106.81750};
-            var boulder = {lat: 40.01500, lng: -105.27050};
-            var breckenridge = {lat: 39.48170, lng: -106.03840};
-            var denver = {lat: 39.7392, lng: -104.9903};
-            var dillon = {lat: 39.63030, lng: -106.04340};
-            var durango = {lat: 37.27530, lng: -107.88010};
-            var estes = {lat: 40.37720, lng: -105.52170};
-            var golden = {lat: 39.75550, lng: -105.22110};
-            var grandJunction = {lat: 39.06390, lng: -108.55060};
-            var pueblo = {lat: 38.2544, lng: -104.6091};
-            var steamboat = {lat: 40.48500, lng: -106.83170};
-            var vail = {lat: 39.64030, lng: -106.37420};
+            var colorado = { lat: 39.5501, lng: -105.7821 };
+            var aspen = { lat: 39.19110, lng: -106.81750 };
+            var boulder = { lat: 40.01500, lng: -105.27050 };
+            var breckenridge = { lat: 39.48170, lng: -106.03840 };
+            var denver = { lat: 39.7392, lng: -104.9903 };
+            var dillon = { lat: 39.63030, lng: -106.04340 };
+            var durango = { lat: 37.27530, lng: -107.88010 };
+            var estes = { lat: 40.37720, lng: -105.52170 };
+            var golden = { lat: 39.75550, lng: -105.22110 };
+            var grandJunction = { lat: 39.06390, lng: -108.55060 };
+            var pueblo = { lat: 38.2544, lng: -104.6091 };
+            var steamboat = { lat: 40.48500, lng: -106.83170 };
+            var vail = { lat: 39.64030, lng: -106.37420 };
 
             map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 7,
@@ -442,12 +442,21 @@
 
         // Adds a marker to the map and push to the array.
         function addMarker(location) {
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-            });
+            $("#hotspots").click(function () {
+                if ($(this).is(":checked")) {
+                    //add marker
+                    var marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+                    markers.push(marker);
 
-            markers.push(marker);
+                } else {
+                    //hide
+                    marker.setMap(null);
+                }
+                console.log(this);
+            });
         }
 
         // Sets the map on all markers in the array.
