@@ -85,6 +85,7 @@ $(document).ready(function () {
         $(":checkbox").change(function () {
             queryLocation = $(this).val();
             identifier = $(this).attr("data-idName");
+            
             if (this.checked) {
                 showAndHide()
                 weatherRequest(queryLocation);
@@ -163,14 +164,17 @@ $(document).ready(function () {
                     weatherRow.append(currentWeather);
                     secondWeather();
 
-                    mapCoordinates = "{ lat: " + lon + ", lng: " + lat + " }"
+                    mapCoordinates = "{ lat: " + lat + ", lng: " + lon + " }"
 
+                    
                     //format for marker
-                    marker = "coords: " + mapCoordinates + ",content: '<h1>" + cityName + "</h1>'}"
-                    console.log('mark =' + marker)
-
-                    markers.push(marker);
+                    // marker = "coords: " + mapCoordinates + ",content: '<h1>" + cityName + "</h1>'}"
+                    marker = "coords: " + mapCoordinates;
+                    console.log('marker =' + marker)
                     console.log(markers);
+                    
+                    markers.push(marker);
+                    console.log("something2");
 
                 });
         }
