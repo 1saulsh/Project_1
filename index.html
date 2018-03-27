@@ -37,28 +37,6 @@
             <!-- <hr class="my-4"> -->
             <h4 class="mt-3"> Compare weather forecast of popular Colorado travel destinations so you can plan your trip</h4>
 
-            <!-- Calendar Form -->
-            <!-- <form action="/action_page.php">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            Start Date:
-                            <br>
-                            <input id="startDate" type="date" name="startDate" min="2018-01-01"  value="2018-01-01">
-                            <br>
-                            <br>
-                        </div>
-                        <div class="col">
-                            End Date:
-                            <br>
-                            <input id="endDate" type="date" name="endDate" min="2018-01-01" max="2028-12-01" value="2018-01-01">
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-            </form> -->
-
             <div class="container text-center">
                 <div class="row">
                     <div class="col"></div>
@@ -114,7 +92,8 @@
                             </div>
                         </form>
 
-                        <!-- <br>
+                        <!-- POTENTAIL FOR THE FUTURE  -->
+                        <!-- <br> 
                         <form method="get" class="lead text-left" id="search">
                             Search for another city:
                             <div class="Options text-center">
@@ -220,56 +199,56 @@
 
             //Array of Markers
 
-            var markers = [
-                {
-                coords: { lat: 39.19110, lng: -106.81750 },
-                content: "<h1>Aspen, CO</h1>"
-            },
-            {
-                coords: { lat: 40.01500, lng: -105.27050 },
-                content: "<h1>Boulder, CO</h1>"
-            },
-            {
-                coords: { lat: 39.48170, lng: -106.03840 },
-                content: "<h1>Breckenridge, CO</h1>"
-            },
-            {
-                coords: { lat: 39.7392, lng: -104.9903 },
-                content: "<h1>Denver, CO</h1>"
-            },
-            {
-                coords: { lat: 39.63030, lng: -106.04340 },
-                content: "<h1>Dillon, CO</h1>"
-            },
-            {
-                coords: { lat: 37.27530, lng: -107.88010 },
-                content: "<h1>Durango, CO</h1>"
-            },
-            {
-                coords: { lat: 40.37720, lng: -105.52170 },
-                content: "<h1>Estes Park, CO</h1>"
-            },
-            {
-                coords: { lat: 39.75550, lng: -105.22110 },
-                content: "<h1>Golden, CO</h1>"
-            },
-            {
-                coords: { lat: 39.06390, lng: -108.55060 },
-                content: "<h1>Grand Junction, CO</h1>"
-            },
-            {
-                coords: { lat: 38.2544, lng: -104.6091 },
-                content: "<h1>Pueblo, CO</h1>"
-            },
-            {
-                coords: { lat: 40.48500, lng: -106.83170 },
-                content: "<h1>Steamboat, CO</h1>"
-            },
-            {
-                coords: { lat: 39.64030, lng: -106.37420 },
-                content: "<h1>Vail, CO</h1>"
-            }
-            ];
+            var markers = [];
+            //     {
+            //         coords: { lat: 39.19110, lng: -106.81750 },
+            //         content: "<h1>Aspen, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 40.01500, lng: -105.27050 },
+            //         content: "<h1>Boulder, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 39.48170, lng: -106.03840 },
+            //         content: "<h1>Breckenridge, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 39.7392, lng: -104.9903 },
+            //         content: "<h1>Denver, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 39.63030, lng: -106.04340 },
+            //         content: "<h1>Dillon, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 37.27530, lng: -107.88010 },
+            //         content: "<h1>Durango, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 40.37720, lng: -105.52170 },
+            //         content: "<h1>Estes Park, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 39.75550, lng: -105.22110 },
+            //         content: "<h1>Golden, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 39.06390, lng: -108.55060 },
+            //         content: "<h1>Grand Junction, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 38.2544, lng: -104.6091 },
+            //         content: "<h1>Pueblo, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 40.48500, lng: -106.83170 },
+            //         content: "<h1>Steamboat, CO</h1>"
+            //     },
+            //     {
+            //         coords: { lat: 39.64030, lng: -106.37420 },
+            //         content: "<h1>Vail, CO</h1>"
+            //     }
+            // ];
 
             //Loop through markers and for each iteration add marker 1
             for (var i = 0; i < markers.length; i++) {
