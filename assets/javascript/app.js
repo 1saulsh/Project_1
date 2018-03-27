@@ -1,3 +1,111 @@
+function initMap() {
+
+    //Map options
+    var options = {
+        zoom: 8,
+        center: { lat: 39.5501, lng: -105.7821 }
+    }
+
+    //New Map
+    var map = new google.maps.Map(document.getElementById("map"), options);
+
+
+    /*
+    //Add marker
+    var marker = new google.maps.Marker({
+        position: {lat:39.7392, lng:-104.9903},
+        map:map
+        });
+
+    var infoWindow = new google.maps.InfoWindow({
+        content:"<h1>Denver, CO</h1>"
+        });
+    
+    marker.addListener("click", function(){
+        infoWindow.open(map, marker);
+        });
+    */
+
+    //Array of Markers
+    var markers = [
+        {
+            coords: { lat: 39.19110, lng: -106.81750 },
+            content: "<h1>Aspen, CO</h1> <a href='https://www.aspenchamber.org/' target='_blank'>More about Aspen</a>'"
+        },
+        {
+            coords: { lat: 40.01500, lng: -105.27050 },
+            content: "<h1>Boulder, CO</h1> <a href='https://www.bouldercoloradousa.com/' target='_blank'>More about Boulder</a>'"
+        },
+        {
+            coords: { lat: 39.48170, lng: -106.03840 },
+            content: "<h1>Breckenridge, CO</h1> <a href='https://www.gobreck.com/' target='_blank'>More about Breckenridge</a>'"
+        },
+        {
+            coords: { lat: 39.7392, lng: -104.9903 },
+            content: "<h1>Denver, CO</h1> <a href='https://denverchamber.org/' target='_blank'>More about Denver</a>'"
+        },
+        {
+            coords: { lat: 39.63030, lng: -106.04340 },
+            content: "<h1>Dillon, CO</h1> <a href='http://www.townofdillon.com/' target='_blank'>More about Dillon</a>'"
+        },
+        {
+            coords: { lat: 37.27530, lng: -107.88010 },
+            content: "<h1>Durango, CO</h1> <a href='https://www.durango.org/' target='_blank'>More about Durango</a>'"
+        },
+        {
+            coords: { lat: 40.37720, lng: -105.52170 },
+            content: "<h1>Estes Park, CO</h1> <a href='https://www.visitestespark.com/' target='_blank'>More about Estes Park</a>'"
+        },
+        {
+            coords: { lat: 39.75550, lng: -105.22110 },
+            content: "<h1>Golden, CO</h1> <a href='https://www.visitgolden.com/' target='_blank'>More about Golden</a>'"
+        },
+        {
+            coords: { lat: 39.06390, lng: -108.55060 },
+            content: "<h1>Grand Junction, CO</h1> <a href='https://www.visitgrandjunction.com/' target='_blank'>More about Grand Junction</a>'"
+        },
+        {
+            coords: { lat: 38.2544, lng: -104.6091 },
+            content: "<h1>Pueblo, CO</h1> <a href='http://pueblo.org/visit-pueblo' target='_blank'>More about Pueblo</a>'"
+        },
+        {
+            coords: { lat: 40.48500, lng: -106.83170 },
+            content: "<h1>Steamboat, CO</h1> <a href='https://www.steamboatchamber.com/' target='_blank'>More about Steamboat</a>'"
+        },
+        {
+            coords: { lat: 39.64030, lng: -106.37420 },
+            content: "<h1>Vail, CO</h1> <a href='https://www.visitvailvalley.com/' target='_blank'>More about Vail</a>'"
+        }
+    ];
+
+    //Loop through markers and for each iteration add marker 
+    for (var i = 0; i < markers.length; i++) {
+
+        //Add Marker
+        addMarker(markers[i]);
+
+    }
+
+    //Add Marker Function
+    function addMarker(props) {
+        var marker = new google.maps.Marker({
+            position: props.coords,
+            map: map,
+        });
+
+        // Check content
+        if (props.content) {
+            var infoWindow = new google.maps.InfoWindow({
+                content: props.content
+            });
+
+            marker.addListener("click", function () {
+                infoWindow.open(map, marker);
+            });
+        }
+    }
+}
+
 $(document).ready(function () {
     // The controller function calls the functions in the desired order
     controller();
@@ -53,7 +161,7 @@ $(document).ready(function () {
 
 
 
-    
+
     //Location suggestion 1 identified by a marker
     /*addMarker = "";
     //Location suggestion 2
@@ -69,6 +177,9 @@ $(document).ready(function () {
         validateEmail()
     }
 
+
+
+
     // <<<<<<<<<<This is an idea for the future >>>>>>>>>>>
     // This function handles events where a city button is clicked
     // $("#add-city").on("click", function (event) {
@@ -80,16 +191,16 @@ $(document).ready(function () {
 
     // Functionality when locations are selected
     function locationButtons() {
-        var locations = [];
-        // Adding an event listener to all checkboxes with a class of "locationBtn"
+        // Adding an event listener to all  boxes with a class of "locationBtn"
         $(":checkbox").change(function () {
             queryLocation = $(this).val();
             identifier = $(this).attr("data-idName");
-            
+
             if (this.checked) {
                 showAndHide()
                 weatherRequest(queryLocation);
                 scrollToWeather();
+
             } else {
                 $("#" + identifier).empty();
             };
@@ -156,6 +267,7 @@ $(document).ready(function () {
                     lon = response.coord.lon;
                     lat = response.coord.lat;
 
+
                     //creating the table data for the currentWeather
                     currentWeather = "<td><strong>" + prettyName + "</strong><img src ='" + currentIcon + "' alt ='Weather Icon'><br> Currently: " + currentTemp + "&#8457 <br> Wind: " + currentWind + " mph <br>" + currentDescription + "</td>";
                     // console.log(currentWeather);
@@ -164,17 +276,19 @@ $(document).ready(function () {
                     weatherRow.append(currentWeather);
                     secondWeather();
 
-                    mapCoordinates = "{ lat: " + lat + ", lng: " + lon + " }"
+                    // coords = "{ lat: " + lat + ", lng: " + lon + " }";
+                    (markers).append(coords);
 
-                    
                     //format for marker
                     // marker = "coords: " + mapCoordinates + ",content: '<h1>" + cityName + "</h1>'}"
-                    marker = "coords: " + mapCoordinates;
-                    console.log('marker =' + marker)
+                    // marker = "coords: " + mapCoordinates;
+                    console.log('marker =' + marker);
                     console.log(markers);
-                    
-                    markers.push(marker);
-                    console.log("something2");
+
+                    markers.append(marker);
+                    console.log('Working?');
+
+                    console.log("this will only appear if the above stuff is working");
 
                 });
         }
