@@ -217,6 +217,7 @@ $(document).ready(function () {
         $('html, body').animate({
             scrollTop: $("#hotspots").offset().top
         }, 2000);
+        
     }
 
 
