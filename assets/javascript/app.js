@@ -114,7 +114,6 @@ $(document).ready(function () {
 
     //Variables Declaration 
     var startDate, endDate, currentDate, maxDate, coldWeather, warmWeather, userEmail, cityName, queryLocation, identifier, lon, lat, mapCoordinates, marker;
-    // options, map, marker, infoWindow;
 
     // Selected City -determined BY and returned FROM the API
     cityName = "";
@@ -158,26 +157,10 @@ $(document).ready(function () {
     //formats map marker
     marker = "";
 
-
-
-
-
-    //Location suggestion 1 identified by a marker
-    /*addMarker = "";
-    //Location suggestion 2
-    addMarker = "";
-    //Location suggestion 3
-    addMarker = "";
-*/
-    //Functions Declaration
-
     //Controles program logic
     function controller() {
         locationButtons()
     }
-
-
-
 
     // <<<<<<<<<<This is an idea for the future >>>>>>>>>>>
     // This function handles events where a city button is clicked
@@ -186,7 +169,6 @@ $(document).ready(function () {
     //     // This line grabs the input from the textbox
     //     var city = $("#city-input").val().trim();
     // });
-
 
     // Functionality when locations are selected
     function locationButtons() {
@@ -198,8 +180,7 @@ $(document).ready(function () {
             if (this.checked) {
                 showAndHide()
                 weatherRequest(queryLocation);
-                scrollToWeather();
-
+                scrollToHotspots();
             } else {
                 $("#" + identifier).empty();
             };
@@ -213,12 +194,11 @@ $(document).ready(function () {
         $("#weatherDisplay").show();
     }
 
-    function scrollToWeather() {
+    function scrollToHotspots() {
         $('html, body').animate({
             scrollTop: $("#hotspots").offset().top
         }, 2000);
     }
-
 
     //Bring back weather API
     function weatherRequest(location) {
@@ -255,7 +235,7 @@ $(document).ready(function () {
                 method: "GET"
             })
                 .then(function (response) {
-                    console.log(weatherURL);
+                    // console.log(weatherURL);
                     // console.log(response);
                     cityName = response.name;
                     prettyName = cityName.toUpperCase();
@@ -274,21 +254,6 @@ $(document).ready(function () {
                     // Adding the currentWeather to the Table Row
                     weatherRow.append(currentWeather);
                     secondWeather();
-
-                    // coords = "{ lat: " + lat + ", lng: " + lon + " }";
-                    (markers).append(coords);
-
-                    //format for marker
-                    // marker = "coords: " + mapCoordinates + ",content: '<h1>" + cityName + "</h1>'}"
-                    // marker = "coords: " + mapCoordinates;
-                    console.log('marker =' + marker);
-                    console.log(markers);
-
-                    markers.append(marker);
-                    console.log('Working?');
-
-                    console.log("this will only appear if the above stuff is working");
-
                 });
         }
         // for forecasted weather
@@ -367,7 +332,6 @@ $(document).ready(function () {
                     weatherRow.append(forecastWeather);
                 });
         }
-        // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
     }
 
     // function to reset weather (& map?)
@@ -377,7 +341,6 @@ $(document).ready(function () {
         $("#selectMessage").show();
         $(":checkbox").prop('checked',false);
     });
-
 
     // Push location specific weather data to weatherWidgets
     function outputLocations() {
