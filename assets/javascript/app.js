@@ -268,12 +268,11 @@ $(document).ready(function () {
 
                 // Adding the currentWeather to the Table Row
                 weatherRow.append(currentWeather);
-                secondWeather();
+                callForecastWeather();
 
             });
-
         // for forecasted weather
-        function secondWeather() {
+        function callForecastWeather() {
             $.ajax({
                 url: forecastURL,
                 method: "GET"
@@ -329,7 +328,7 @@ $(document).ready(function () {
         clearAll.preventDefault();
         $("#weatherWidget").empty();
         $("#selectMessage").show();
-        $(":checkbox").prop('checked',false);
+        $(":checkbox").prop('checked', false);
     });
 
 }); //ends the "document.ready" code
