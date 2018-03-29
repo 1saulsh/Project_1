@@ -174,6 +174,7 @@ $(document).ready(function () {
     //Controles program logic
     function controller() {
         locationButtons()
+        // validateEmail()
     }
 
 
@@ -331,4 +332,60 @@ $(document).ready(function () {
         $(":checkbox").prop('checked', false);
     });
 
+
+    // Push location specific weather data to weatherWidgets
+    function outputLocations() {
+    }
+
+    //Pin locations to map as they are selected by user
+    function mapRequest() {
+    }
+
+    //Expands location suggestions
+    function expandSuggestion() {
+    }
+
+    //User input verification for email format
+    // function validateEmail() {
+    //     function isEmail(email) {
+    //         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    //         return regex.test(email);
+    //         console.log('?? =' + regex.test(email));
+    //     }
+    // }
+
+    //Stores user email
+    function storeEmail() {
+
+    }
+
+    //Initializes Firebase
+    var config = {
+        apiKey: "AIzaSyDArV6eE1B4jA-wTGWT0sKUmbSobhgd78U",
+        authDomain: "project-1-b6d47.firebaseapp.com",
+        databaseURL: "https://project-1-b6d47.firebaseio.com",
+        projectId: "project-1-b6d47",
+        storageBucket: "project-1-b6d47.appspot.com",
+        messagingSenderId: "137075171849"
+    };
+    firebase.initializeApp(config);
+
+
+    var database = firebase.database();
+    // Initial Values
+    var email = "";
+    // Capture Button Click
+    $("#signup-button").on("click", function() {
+        // Don't refresh the page
+        event.preventDefault();
+        // Store and retrieve email submission
+        email = $("#email-input").val().trim();
+        // Push email data to Firebase
+        database.ref().push(email); 
+        // Log user email input
+        console.log(email);
+        // Clears the text-box
+        $("#email-input").val("");
+        
+      });
 }); //ends the "document.ready" code

@@ -143,7 +143,15 @@
             <div id="map">
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+        <!-- <div class="email p-2 m-1">
+=======
+>>>>>>> Lisa
         <div class="email p-2 m-1">
+>>>>>>> master
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
@@ -156,7 +164,41 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div> -->
+
+        <div class="email p-2 m-1">
+                <label>Enter Your Email Address for Future Updates:</label>
+                <p id="signup-success" class="text-success"></p>
+                <p id="signup-error" class="text-danger"></p>
+                <form class="signup-form form-inline" id="signup-form" role="form" onsubmit="return signup(this)">
+                    <div class="form-row align-items-center">
+                    <div class="col-auto">
+                    <input class="form-control" id ="email-input" name="email" type="email" placeholder="Your email. eg., name@stayco.com" required>
+                    <button class="btn btn-danger" id="signup-button" type="submit" data-toggle="modal" data-target="#emailModal">Submit</button>
+                    <small class="form-text">We'll never share your email with anyone else.</small>
+                   <!-- Modal -->
+                    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel">Email submission successful!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Thanks for signing up!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+    
+    
+                </form>
+            </div>
 
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -173,35 +215,7 @@
 
     <!--Firebase script-->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script>
-    // Initialize Firebase
-    $.fn.getFormData = function() {
-      var fields = this.find('[email]');
-      var result = {};
-      $.each(fields, function (i, el) {
-        result[el.email] = el.value;
-      });
-      return result;
-    };
-    var config = {
-        apiKey: "AIzaSyDArV6eE1B4jA-wTGWT0sKUmbSobhgd78U",
-        authDomain: "project-1-b6d47.firebaseapp.com",
-        databaseURL: "https://project-1-b6d47.firebaseio.com",
-        projectId: "project-1-b6d47",
-        storageBucket: "project-1-b6d47.appspot.com",
-        messagingSenderId: "137075171849"
-    };
-    firebase.initializeApp(config);
-
-    var userEmail;
-      $('.submit').on('click', function (e) {
-        e.preventDefault();
-        var updates = {};
-        userEmail = userEmail ? userEmail : fb.database().ref().child('user-data').push().key;
-        updates[userEmail] = $('form').getFormData();
-        fb.database().ref().child('user-data').update(updates);
-      });
-    </script>
+    
 
 </body>
 
