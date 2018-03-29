@@ -158,15 +158,6 @@ $(document).ready(function () {
     //formats map marker
     marker = "";
 
-<<<<<<< HEAD
-=======
-
-=======
-
-
-
-    
->>>>>>> b10b4c60bb3e05c80a853975f1b0fb2719716661
     //Location suggestion 1 identified by a marker
     /*addMarker = "";
     //Location suggestion 2
@@ -179,18 +170,12 @@ $(document).ready(function () {
     //Controles program logic
     function controller() {
         locationButtons()
-<<<<<<< HEAD
         // validateEmail()
     }
 
 
 
 
-=======
-
-        // validateEmail()
-    }
->>>>>>> b10b4c60bb3e05c80a853975f1b0fb2719716661
     // <<<<<<<<<<This is an idea for the future >>>>>>>>>>>
     // This function handles events where a city button is clicked
     // $("#add-city").on("click", function (event) {
@@ -202,13 +187,6 @@ $(document).ready(function () {
 
     // Functionality when locations are selected
     function locationButtons() {
-<<<<<<< HEAD
-        // Adding an event listener to all  boxes with a class of "locationBtn"
-        $(":checkbox").change(function () {
-            queryLocation = $(this).val();
-            identifier = $(this).attr("data-idName");
-
-=======
 
         var locations = [];
         // Adding an event listener to all checkboxes with a class of "locationBtn"
@@ -216,7 +194,6 @@ $(document).ready(function () {
             queryLocation = $(this).val();
             identifier = $(this).attr("data-idName");
           
->>>>>>> b10b4c60bb3e05c80a853975f1b0fb2719716661
             if (this.checked) {
                 showAndHide()
                 weatherRequest(queryLocation);
@@ -238,11 +215,7 @@ $(document).ready(function () {
     function scrollToWeather() {
         $('html, body').animate({
             scrollTop: $("#hotspots").offset().top
-<<<<<<< HEAD
-        }, 800);
-=======
         }, 2000);
->>>>>>> b10b4c60bb3e05c80a853975f1b0fb2719716661
     }
 
 
@@ -265,42 +238,6 @@ $(document).ready(function () {
         // These come from the forcastURL
         var timestamp24, timestamp48, timestamp72, timestamp96, timestamp120, icon24, icon48, icon72, icon96, icon120, high24, high48, high72, high96, high120, low24, low48, low72, low96, low120, description24, description48, description72, description96, description120;
 
-<<<<<<< HEAD
-        // Creates a new row to store location based weather
-        var weatherRow = $("<tr id='" + identifier + "'>");
-
-        // Adding the currentWeather to the table
-        $("#weatherWidget").append(weatherRow);
-
-        // for current weather
-        $.ajax({
-            url: weatherURL,
-            method: "GET"
-        })
-            .then(function (response) {
-                console.log(weatherURL);
-                // console.log(response);
-                cityName = response.name;
-                prettyName = cityName.toUpperCase();
-                currentTemp = response.main.temp;
-                currentWind = response.wind.speed;
-                currentDescription = response.weather[0].description;
-                currentIcon = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-                lon = response.coord.lon;
-                lat = response.coord.lat;
-
-                //creating the table data for the currentWeather
-                currentWeather = "<td><strong>" + prettyName + "</strong><img src ='" + currentIcon + "' alt ='Weather Icon'><br> Currently: " + currentTemp + "&#8457 <br> Wind: " + currentWind + " mph <br>" + currentDescription + "</td>";
-                // console.log(currentWeather);
-
-                // Adding the currentWeather to the Table Row
-                weatherRow.append(currentWeather);
-                callForecastWeather();
-
-            });
-        // for forecasted weather
-        function callForecastWeather() {
-=======
 
         firstWeather();
 
@@ -354,40 +291,11 @@ $(document).ready(function () {
         // for forecasted weather
         function secondWeather() {
 
->>>>>>> b10b4c60bb3e05c80a853975f1b0fb2719716661
             $.ajax({
                 url: forecastURL,
                 method: "GET"
             })
                 .then(function (response) {
-<<<<<<< HEAD
-                    timestamp24 = moment.unix(response.list[8].dt).format("MMM DD");
-                    timestamp48 = moment.unix(response.list[16].dt).format("MMM DD");
-                    timestamp72 = moment.unix(response.list[24].dt).format("MMM DD");
-                    timestamp96 = moment.unix(response.list[32].dt).format("MMM DD");
-                    timestamp120 = moment.unix(response.list[response.list.length - 1].dt).format("MMM DD");
-
-                    icon24 = "http://openweathermap.org/img/w/" + response.list[8].weather[0].icon + ".png"
-                    icon48 = "http://openweathermap.org/img/w/" + response.list[16].weather[0].icon + ".png"
-                    icon72 = "http://openweathermap.org/img/w/" + response.list[24].weather[0].icon + ".png"
-                    icon96 = "http://openweathermap.org/img/w/" + response.list[32].weather[0].icon + ".png"
-                    icon120 = "http://openweathermap.org/img/w/" + response.list[response.list.length - 1].weather[0].icon + ".png"
-                    high24 = response.list[8].main.temp_max;
-                    high48 = response.list[16].main.temp_max;
-                    high72 = response.list[24].main.temp_max;
-                    high96 = response.list[32].main.temp_max;
-                    high120 = response.list[response.list.length - 1].main.temp_max;
-                    low24 = response.list[8].main.temp_min;
-                    low48 = response.list[16].main.temp_min;
-                    low72 = response.list[24].main.temp_min;
-                    low96 = response.list[32].main.temp_min;
-                    low120 = response.list[response.list.length - 1].main.temp_min;
-                    description24 = response.list[8].weather[0].description;
-                    description48 = response.list[16].weather[0].description;
-                    description72 = response.list[24].weather[0].description;
-                    description96 = response.list[32].weather[0].description;
-                    description120 = response.list[response.list.length - 1].weather[0].description;
-=======
 
                     // console.log("forecastURL= " + forecastURL);
                     timestamp24 = moment.unix(response.list[8].dt).format("MMM DD");
@@ -469,7 +377,6 @@ $(document).ready(function () {
                     description96 = response.list[32].weather[0].description;
                     description120 = response.list[response.list.length - 1].weather[0].description;
 
->>>>>>> b10b4c60bb3e05c80a853975f1b0fb2719716661
 
                     forecastWeather24 = "<td><strong>" + timestamp24 + "</strong><img src ='" + icon24 + "' alt ='Weather Icon'><br> High: " + high24 + "&#8457 <br> Low: " + low24 + "&#8457 <br>" + description24 + "</td>";
 
@@ -487,11 +394,8 @@ $(document).ready(function () {
                     weatherRow.append(forecastWeather);
                 });
         }
-<<<<<<< HEAD
-=======
 
         // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
->>>>>>> b10b4c60bb3e05c80a853975f1b0fb2719716661
     }
 
     // function to reset weather (& map?)
@@ -513,10 +417,6 @@ $(document).ready(function () {
 
     //Expands location suggestions
     function expandSuggestion() {
-<<<<<<< HEAD
-=======
-
->>>>>>> b10b4c60bb3e05c80a853975f1b0fb2719716661
     }
 
     //User input verification for email format
