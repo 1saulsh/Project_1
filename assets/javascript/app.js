@@ -158,10 +158,6 @@ $(document).ready(function () {
     //formats map marker
     marker = "";
 
-
-
-
-
     //Location suggestion 1 identified by a marker
     /*addMarker = "";
     //Location suggestion 2
