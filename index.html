@@ -29,11 +29,11 @@
 
 <body>
     <div class="container">
-        <div class="jumbo text-center pb-2">
+        <div class="animated fadeIn jumbo text-center pb-2" style="animation-delay: 1.5s;">
 
-            <h1 class="title text-center">StayCO</h1>
+            <h1 class="title text-center animated bounceInUp" style="animation-delay: 1.5s;">StayCO</h1>
             <p class="tag-line text-center"> Embracing Colorado Weather One Day at a Time</p>
-            <img class="stayCoImg animated fadeInUpBig" src="./assets/images/bluTxt-StayCO.jpg" alt="stayCO Logo">
+            <img class="stayCoImg animated bounceInDown" style="animation-delay: 1.5s;" src="./assets/images/bluTxt-StayCO.jpg" alt="stayCO Logo">
 
             <!-- <hr class="my-4"> -->
             <h4 class="mt-3"> Compare weather forecast of popular Colorado travel destinations so you can plan your trip</h4>
@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-6">
-
+                        <br>
                         <form method="get" class="lead text-left" id="hotspots">
                             Colorado Hotspots for you to choose from:
                             <div class="Options">
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <div id="weatherDisplay" class="card mt-1 weather">
+        <div id="weatherDisplay" class="animated bounceInDown card mt-1 weather">
             <div class="card-header weather p-2 mt-1 mx-1 text-left">
                 <div class="row">
                     <div class="col">
@@ -140,189 +140,46 @@
             </div>
         </div>
 
-        <div class="location p-2 m-1">
+        <div class="animated fadeIn location p-2 m-1" style="animation-delay: 1.5s;">
             <h2>Map</h2>
             <div id="map">
             </div>
         </div>
 
-        <!-- <div class="email p-2 m-1">
 
+        <div class="email p-2 m-1">
+            <h3 id="signup-success" class="text-success"></h3>
+            <div class="email p-2 m-1">
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
                         <label>Enter Your Email Address for Future Updates:</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+                        <input type="email" class="form-control" id="email-input" aria-describedby="email" placeholder="ex: youremail@stayco.com">
                         <small class="form-text">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-danger">Submit</button>
+                        <button id="signup-button" type="submit" class="btn btn-danger">Submit</button>
                     </div>
+
                 </div>
             </form>
-        </div> -->
+        </div> 
+                
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="./assets/javascript/app.js"></script>
 
-        <div class="email p-2 m-1">
-                <label>Enter Your Email Address for Future Updates:</label>
-                <p id="signup-success" class="text-success"></p>
-                <p id="signup-error" class="text-danger"></p>
-                <form class="signup-form form-inline" id="signup-form" role="form" onsubmit="return signup(this)">
-                    <div class="form-row align-items-center">
-                    <div class="col-auto">
-                    <input class="form-control" id ="email-input" name="email" type="email" placeholder="Your email. eg., name@stayco.com" required>
-                    <button class="btn btn-danger" id="signup-button" type="submit" data-toggle="modal" data-target="#emailModal">Submit</button>
-                    <small class="form-text">We'll never share your email with anyone else.</small>
-                   <!-- Modal -->
-                    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel">Email submission successful!</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Thanks for signing up!</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-    
-    
-                </form>
-            </div>
+<!--GoogleMaps API script-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
+</script>
 
-    </div>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="./assets/javascript/app.js"></script>
+<!--Firebase script-->
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-
-    <script>
-        function initMap() {
-
-            //Map options
-            var options = {
-                zoom: 8,
-                center: { lat: 39.5501, lng: -105.7821 }
-            }
-
-            //New Map
-            var map = new google.maps.Map(document.getElementById("map"), options);
-
-            /*
-            //Add marker
-            var marker = new google.maps.Marker({
-                position: {lat:39.7392, lng:-104.9903},
-                map:map
-                });
- 
-            var infoWindow = new google.maps.InfoWindow({
-                content:"<h1>Denver, CO</h1>"
-                });
-            
-            marker.addListener("click", function(){
-                infoWindow.open(map, marker);
-                });
-            */
-
-            //Array of Markers
-
-            var markers = [];
-            //     {
-            //         coords: { lat: 39.19110, lng: -106.81750 },
-            //         content: "<h1>Aspen, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 40.01500, lng: -105.27050 },
-            //         content: "<h1>Boulder, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 39.48170, lng: -106.03840 },
-            //         content: "<h1>Breckenridge, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 39.7392, lng: -104.9903 },
-            //         content: "<h1>Denver, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 39.63030, lng: -106.04340 },
-            //         content: "<h1>Dillon, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 37.27530, lng: -107.88010 },
-            //         content: "<h1>Durango, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 40.37720, lng: -105.52170 },
-            //         content: "<h1>Estes Park, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 39.75550, lng: -105.22110 },
-            //         content: "<h1>Golden, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 39.06390, lng: -108.55060 },
-            //         content: "<h1>Grand Junction, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 38.2544, lng: -104.6091 },
-            //         content: "<h1>Pueblo, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 40.48500, lng: -106.83170 },
-            //         content: "<h1>Steamboat, CO</h1>"
-            //     },
-            //     {
-            //         coords: { lat: 39.64030, lng: -106.37420 },
-            //         content: "<h1>Vail, CO</h1>"
-            //     }
-            // ];
-
-            //Loop through markers and for each iteration add marker 1
-            for (var i = 0; i < markers.length; i++) {
-
-                //Add Marker
-                addMarker(markers[i]);
-
-            }
-
-            //Add Marker Function
-            function addMarker(props) {
-                var marker = new google.maps.Marker({
-                    position: props.coords,
-                    map: map,
-                });
-
-                // Check content
-                if (props.content) {
-                    var infoWindow = new google.maps.InfoWindow({
-                        content: props.content
-                    });
-
-                    marker.addListener("click", function () {
-                        infoWindow.open(map, marker);
-                    });
-                }
-            }
-        }
-    </script>
-
-    <!--GoogleMaps API script-->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
-    </script>
-
-    <!--Firebase script-->
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    
 
 </body>
 
