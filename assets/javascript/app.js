@@ -16,7 +16,6 @@ function initMap() {
         position: {lat:39.7392, lng:-104.9903},
         map:map
         });
-
     var infoWindow = new google.maps.InfoWindow({
         content:"<h1>Denver, CO</h1>"
         });
@@ -158,12 +157,6 @@ $(document).ready(function () {
     //formats map marker
     marker = "";
 
-
-=======
-
-
-
-    
     //Location suggestion 1 identified by a marker
     /*addMarker = "";
     //Location suggestion 2
@@ -176,9 +169,12 @@ $(document).ready(function () {
     //Controles program logic
     function controller() {
         locationButtons()
-
         // validateEmail()
     }
+
+
+
+
     // <<<<<<<<<<This is an idea for the future >>>>>>>>>>>
     // This function handles events where a city button is clicked
     // $("#add-city").on("click", function (event) {
@@ -406,6 +402,7 @@ $(document).ready(function () {
         clearAll.preventDefault();
         $("#weatherWidget").empty();
         $("#selectMessage").show();
+        $(":checkbox").prop('checked', false);
     });
 
 
@@ -419,16 +416,21 @@ $(document).ready(function () {
 
     //Expands location suggestions
     function expandSuggestion() {
-
     }
 
-    // function to reset weather (& map?)
-    $("#clearAll").on("click", function (clearAll) {
-        clearAll.preventDefault();
-        $("#weatherWidget").empty();
-        $("#selectMessage").show();
-        $(":checkbox").prop('checked', false);
-    });
+    //User input verification for email format
+    // function validateEmail() {
+    //     function isEmail(email) {
+    //         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    //         return regex.test(email);
+    //         console.log('?? =' + regex.test(email));
+    //     }
+    // }
+
+    //Stores user email
+    function storeEmail() {
+
+    }
 
     //Initializes Firebase
     var config = {
@@ -457,6 +459,8 @@ $(document).ready(function () {
         console.log(email);
         // Clears the text-box
         $("#email-input").val("");
+        // Prints Success Message
+        $("#signup-success").text("Thanks for signing up!");
         
       });
 }); //ends the "document.ready" code
