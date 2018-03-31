@@ -147,70 +147,43 @@
         </div>
 
 
-        <!-- <div class="email p-2 m-1">
-                    <div class="email p-2 m-1">
->>>>>>> master
-=======
+
+        <div class="email p-2 m-1">
+            <h3 id="signup-success" class="text-success"></h3>
+            <div class="email p-2 m-1">
+
+
             <form>
                 <div class="form-row align-items-center">
                     <div class="col-auto">
                         <label>Enter Your Email Address for Future Updates:</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+                        <input type="email" class="form-control" id="email-input" aria-describedby="email" placeholder="ex: youremail@stayco.com">
                         <small class="form-text">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-danger">Submit</button>
+                        <button id="signup-button" type="submit" class="btn btn-danger">Submit</button>
                     </div>
+
                 </div>
             </form>
-        </div> -->
 
-        <div class="email p-2 m-1">
-            <label>Enter Your Email Address for Future Updates:</label>
-            <p id="signup-success" class="text-success"></p>
-            <p id="signup-error" class="text-danger"></p>
-            <form class="signup-form form-inline" id="signup-form" role="form" onsubmit="return signup(this)">
-                <div class="form-row align-items-center">
-                    <div class="col-auto">
-                        <input class="form-control" id ="email-input" name="email" type="email" placeholder="Your email. eg., name@stayco.com" required>
-                        <button class="btn btn-danger" id="signup-button" type="submit" data-toggle="modal" data-target="#emailModal">Submit</button>
-                        <small class="form-text">We'll never share your email with anyone else.</small>
-                       <!-- Modal -->
-                        <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabel">Email submission successful!</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Thanks for signing up!</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        </div> 
+                
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="./assets/javascript/app.js"></script>
 
-                    </div>
-                    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                        crossorigin="anonymous"></script>
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-                        crossorigin="anonymous"></script>
-                    <script src="./assets/javascript/app.js"></script>
+<!--GoogleMaps API script-->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
+</script>
 
-                    <!--GoogleMaps API script-->
-                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXewlGo5brD8HlCh3P8fdqOErBY57gVto&callback=initMap">
-                    </script>
-
-                    <!--Firebase script-->
-                    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-
+<!--Firebase script-->
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+        
 
 </body>
 

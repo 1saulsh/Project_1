@@ -16,7 +16,6 @@ function initMap() {
         position: {lat:39.7392, lng:-104.9903},
         map:map
         });
-
     var infoWindow = new google.maps.InfoWindow({
         content:"<h1>Denver, CO</h1>"
         });
@@ -460,6 +459,8 @@ $(document).ready(function () {
         console.log(email);
         // Clears the text-box
         $("#email-input").val("");
+        // Prints Success Message
+        $("#signup-success").text("Thanks for signing up!");
         
       });
 }); //ends the "document.ready" code
